@@ -9,8 +9,6 @@
   * [Understanding Transactions and Block Propagation](blockchain-basics/block-propagation.md)
   * [Understanding Consensus Models](blockchain-basics/consensus-models.md)
 
-## Blockchain Introduction
-
 ## Usage Guides
 
 * [How to Use the Desktop Wallet](usage-guides/desktop-wallet-intro.md)
