@@ -75,19 +75,31 @@ The ARK Desktop Wallet allows you to both create new wallets and import existing
 
 * _\(Optional\)_ **Require a password to decrypt the Passphrase for an added layer of security**
 
-\*\*\*\*
+![](../.gitbook/assets/passwordencryption.png)
 
 * _\(Optional\)_ **Name the new wallet and copy its address**
+
+![](../.gitbook/assets/creationconfirmation.png)
 
 ### Importing Your Wallet <a id="importing-your-wallet"></a>
 
 * **Import your wallet by providing its address, passphrase, or both**
+
+![](../.gitbook/assets/importwallet.png)
+
 * _\(Optional\)_ **Require a password to decrypt the Passphrase for an added layer of security**
+
+![](../.gitbook/assets/passwordencryption2.png)
+
 * _\(Optional\)_ **Name the new wallet and copy its address**
+
+![](../.gitbook/assets/importconfirmation.png)
 
 ## Wallet Interface <a id="wallet-interface"></a>
 
 The wallet interface page can be reached by clicking on the wallet icon in the navigation bar of the application. On it, you will be able to view your profile or an individual wallet's balance. Some shortcuts are also provided to create or import a wallet and see the details of one of your wallet.
+
+![](../.gitbook/assets/mywallets.png)
 
 ### Wallet Details <a id="wallet-details"></a>
 
@@ -101,22 +113,39 @@ On the wallet detail page, which is accessed by clicking on the wallet's name or
 * Register a second passphrase for added security.
 * Register the wallet as a delegate.
 
+![](../.gitbook/assets/mainwallet.png)
+
 ### Sending an ARK Transfer <a id="sending-an-ark-transfer"></a>
 
 Transferring ARK from your wallet is the most common type of transaction.
 
 You can quickly send a transfer by clicking on the _**Send**_ button in the header of the wallet detail page. This will bring up a prompt, on which you can fill in the required information to create a transfer transaction.
 
+![](../.gitbook/assets/transfer.png)
+
 Upon clicking _**Next**_, you will have to review the transfer transaction's details and decide whether to submit it, then discard or save it by clicking _**Send**_, _**Back**_ or _**Save**_.
+
+![](../.gitbook/assets/submittransfer.png)
 
 ### Voting for a Registered Delegate and Unvoting <a id="voting-for-a-registered-delegate-and-unvoting"></a>
 
 Delegated Proof of Stake, the consensus algorithm used by the ARK Core, requires network participants to vote for delegates with their funds. A vote is not like a transfer; it merely helps determine which delegates have the most support from network members. You may only vote for one delegate at a time, and your funds are not locked while you are voting.
 
 * **Browse the list of registered delegates**
+
+![](../.gitbook/assets/delegates.png)
+
 * **Choose the delegate you wish to vote for, review their statistics and click** _**Vote**_
+
+![](../.gitbook/assets/delegatestats.png)
+
 * **Fill in the required vote transaction fields and click** _**Next**_
+
+![](../.gitbook/assets/vote.png)
+
 * **Submit, discard or save the vote transaction by pressing either** _**Send**_**,** _**Back**_ **or** _**Save**_
+
+![](../.gitbook/assets/submitvote.png)
 
 _**Unvoting**_
 
