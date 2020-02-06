@@ -127,7 +127,7 @@ Upon clicking _**Next**_, you will have to review the transfer transaction's det
 
 ![](../.gitbook/assets/submittransfer.png)
 
-### Voting for a Registered Delegate and Unvoting <a id="voting-for-a-registered-delegate-and-unvoting"></a>
+### Voting for a Registered Delegate <a id="voting-for-a-registered-delegate-and-unvoting"></a>
 
 Delegated Proof of Stake, the consensus algorithm used by the ARK Core, requires network participants to vote for delegates with their funds. A vote is not like a transfer; it merely helps determine which delegates have the most support from network members. You may only vote for one delegate at a time, and your funds are not locked while you are voting.
 
@@ -147,13 +147,27 @@ Delegated Proof of Stake, the consensus algorithm used by the ARK Core, requires
 
 ![](../.gitbook/assets/submitvote.png)
 
-_**Unvoting**_
+### Un-Voting for a Registered Delegate <a id="voting-for-a-registered-delegate-and-unvoting"></a>
 
 * **Open the list of registered delegates**
+
+![](../.gitbook/assets/delegatelistunvote.png)
+
 * **Click on the** _**Unvote**_ **button**
+
+![](../.gitbook/assets/clickunvotebutton.png)
+
 * **Review the delegate's stats and click the** _**Unvote**_ **button**
-* **Choose a transcation fee, enter your security details and click** _**Next**_
+
+![](../.gitbook/assets/reviewunvote.png)
+
+* **Choose a transaction fee, enter your security details and click** _**Next**_
+
+![](../.gitbook/assets/unvotedetails.png)
+
 * **Submit the unvote transaction and Submit, Cancel or Save it by clicking either** _**Send**_**,** _**Back**_ **or** _**Save**_
+
+![](../.gitbook/assets/submitunvote.png)
 
 ### Signing and Verifying Messages <a id="signing-and-verifying-messages"></a>
 
