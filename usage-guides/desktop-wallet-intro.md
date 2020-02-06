@@ -16,9 +16,13 @@ To download the application, you can visit the link below and select the appropr
 
 When you arrive on this page, you will see multiple download options. Select the one that reflects your operating system:
 
+![](../.gitbook/assets/releases.png)
+
 ## Getting Started <a id="getting-started"></a>
 
 After opening the ARK Desktop Wallet application for the first time, you will be greeted with security instructions. Please read every slide, as each one provides essential details on how you can better protect your funds.
+
+![](../.gitbook/assets/welcome.png)
 
 Once you've read through the welcome instructions, you will be presented a page on which you can create your first profile. This is a multiple-stepped process in which you enter or select:
 
@@ -27,17 +31,29 @@ Once you've read through the welcome instructions, you will be presented a page 
   * The application's language and currency settings
   * Which language to use for [12-word BIP39 Passphrase](https://en.bitcoin.it/wiki/Seed_phrase)
   * One of many amazing avatars
+
+![](../.gitbook/assets/newprofile1.png)
+
 * **Network**
   * Which network to operate on, either the regular ARK network or the ARK Devnet \(for developers\)
+
+![](../.gitbook/assets/newprofile2.png)
+
 * **Appearance**
   * The Light or Dark theme
   * Your favorite background design
 
+![](../.gitbook/assets/newprofile3.png)
+
 Upon successfully creating your profile, you will be brought to the dashboard.
+
+![](../.gitbook/assets/dashboard.png)
 
 ## News and Important Updates <a id="news-and-important-updates"></a>
 
 The Desktop Wallet has a dedicated section, showing news and other relevant updates in the ARK Ecosystem. Often, you will receive new blog posts in this section, which can be accessed via clicking the newspaper icon in the wallet's navigation bar.
+
+![](../.gitbook/assets/news.png)
 
 ## Creating or Importing Your ARK Wallet <a id="creating-or-importing-your-ark-wallet"></a>
 
@@ -46,9 +62,21 @@ The ARK Desktop Wallet allows you to both create new wallets and import existing
 ### Creating a New Wallet <a id="creating-a-new-wallet"></a>
 
 * **Pick an address to claim**
+
+![](../.gitbook/assets/chooseaddress.png)
+
 * **Save your 12-word BIP39 Passphrase**
+
+![](../.gitbook/assets/walletbackup.png)
+
 * **Prove that you have saved your Passphrase**
+
+![](../.gitbook/assets/passphraseverification.png)
+
 * _\(Optional\)_ **Require a password to decrypt the Passphrase for an added layer of security**
+
+\*\*\*\*
+
 * _\(Optional\)_ **Name the new wallet and copy its address**
 
 ### Importing Your Wallet <a id="importing-your-wallet"></a>
