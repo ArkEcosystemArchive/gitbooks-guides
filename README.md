@@ -1,4 +1,4 @@
-# Introduction
+# Getting Started
 
 The tutorials are a collection for all ARK Ecosystem guides, code snippets, and more. It contains easy guides to help you get started with different parts of ARK Core and the ARK API. It does not provide a complete technical reference, merely quickstart guides.
 

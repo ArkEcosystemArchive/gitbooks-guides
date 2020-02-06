@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Introduction](README.md)
+* [Getting Started](README.md)
 * [Introduction To Blockchain](blockchain-basics/README.md)
   * [When Do You Need a Blockchain?](blockchain-basics/when.md)
   * [Why Do Blockchains Exist?](blockchain-basics/why.md)
