@@ -82,6 +82,8 @@ Depending on your operating system you will connect to your server in different 
 
 Open PuTTy and place the `IP address` given to you by your provider in the `Host Name` field as shown below. You should probably save this host, so you don't have to enter it every time.
 
+![](../.gitbook/assets/howtosetupanewserverimage1.jpeg)
+
 **MacOS / Linux**
 
 Open up a new terminal window and type in the following to connect to your new server via `SSH` \(replace user and IP address with the one provided by the hosting provider\).
@@ -105,7 +107,8 @@ When prompted, use the password given to you by your hosting provider. Some prov
 Executing this guide as the root user should be avoided. Instead, create a new dedicated user to manage ARK related software. On your server, type the following into the command line and press enter. `username` is the name you want to log in with with. We’ll illustrate it as **`adduser ark`** to create a user by the name of ‘ark’, but you can chose something else, if preferred.
 
 ```text
-adduser <username> //in our example we'll create user by the name of 'ark' so we'll replace <username> with ark and run:adduser ark
+adduser <username> //in our example we'll create user by the name of 'ark' so we'll replace <username> with ark and run:
+adduser ark
 ```
 
 You will need to enter a user password and confirm it by entering the same password again. After that, you will be prompted to enter in the user’s full name and some other information. Feel free to leave them all blank, as they are optional, by pressing ‘enter’. When prompted to confirm, type ‘Y’ and press ‘enter’ to finish.
@@ -217,7 +220,8 @@ _NOTE: if you are going to operate on Devnet, before you start relay you will ne
 
 ```text
 ark config:cli --channel=next
-//only run this on Devnet, before you start the relay process with ark  relay:start, DON'T RUN THIS ON MAINNET
+//only run this on Devnet, before you start the relay process with 
+ark relay:start // DON'T RUN THIS ON MAINNET
 ```
 
 To start the ARK relay process, and with it the synchronization process with the ARK blockchain, we need to start the relay process with our integrated CLI:
@@ -239,7 +243,9 @@ Starting ark-relay... done
 Now we want to see if the ARK Relay process has started the synchronization process. You can do that by running one of these two commands:
 
 ```text
-ark relay:log// OR RUNpm2 logs
+ark relay:log
+// OR RUN
+pm2 logs
 ```
 
 If the process has started, you will see a lot of messages like this, with actual data.
@@ -276,10 +282,21 @@ Chose the preferred method using the `up` and `down` arrow keys, confirm it with
 An example of setting up **Encrypted BIP38** passphrase:
 
 ```text
-ark config:forger✔ What method would you like to use to store your passphrase? › Encrypted BIP38 (Recommended)✔ Please enter your delegate passphrase … 
-you will write your 12 word passphrase (all lower case, 12 words, separated by space)✔ Please enter your desired BIP38 password … 
-your desired password to decrypt your passphrase✔ Can you confirm? … 
+ark config:forger
+
+✔ What method would you like to use to store your passphrase? 
+
+› Encrypted BIP38 (Recommended)
+
+✔ Please enter your delegate passphrase … 
+you will write your 12 word passphrase (all lower case, 12 words, separated by space)
+
+✔ Please enter your desired BIP38 password … 
+your desired password to decrypt your passphrase
+
+✔ Can you confirm? … 
 pressing 'Y' + enter to confirm  ✔ Prepare configuration
+
   ✔ Validate passphrase
   ✔ Prepare crypto
   ✔ Loading private key
@@ -289,9 +306,19 @@ pressing 'Y' + enter to confirm  ✔ Prepare configuration
 An example of setting up **Plain BIP39** passphrase:
 
 ```text
-ark config:forger✔ What method would you like to use to store your passphrase? ›Plain BIP39✔ Please enter your delegate passphrase … 
-you will write your 12 word passphrase (all lower case, 12 words, separated by space)✔ Can you confirm? … 
-pressing 'Y' + enter to confirm✔ Prepare configuration
+ark config:forger
+
+✔ What method would you like to use to store your passphrase? 
+
+›Plain BIP39
+
+✔ Please enter your delegate passphrase … 
+you will write your 12 word passphrase (all lower case, 12 words, separated by space)
+
+✔ Can you confirm? … 
+pressing 'Y' + enter to confirm
+
+✔ Prepare configuration
   ✔ Validate passphrase
   ✔ Write BIP39 to configuration
 ```
@@ -313,7 +340,9 @@ Starting ark-forger... done
 This will initiate and read your passphrase and start the Forger process. You can check Forger logs by writing one of this commands:
 
 ```text
-pm2 logs ark-forger// OR RUNark forger:log
+pm2 logs ark-forger
+// OR RUN
+ark forger:log
 ```
 
 If you set it up successfully, after your node is fully synced, you should see an output similar to this, but with your own delegate name and your delegate’s public key:
@@ -359,13 +388,18 @@ This is it! You just made a backup of the blockchain.
 You can see a list of all completed snapshots in this filepath \(_replace_ _**&lt;network&gt;**_ _with the network you operate on — mainnet,devnet,testnet_\):
 
 ```text
-ls /home/ark/.local/share/ark-core/<network>/snapshotsexample:ls /home/ark/.local/share/ark-core/mainnet/snapshots//In our example it made backup of blockchain 1-7739750 which means from height 1 to height 7739750
+ls /home/ark/.local/share/ark-core/<network>/snapshots
+example:
+ls /home/ark/.local/share/ark-core/mainnet/snapshots
+//In our example it made backup of blockchain 1-7739750 which means
+ from height 1 to height 7739750
 ```
 
 _Useful tip: next time you want to make a snapshot, you can just append data to one of the previously made snapshots to save time. Lets use our snapshot we made in the previous step \(directory filename 1–7739750\) and append the difference of current height to it to have an up-to-date snapshot ready. We’ll run the command, replacing the filename with yours, which can be obtained by running the command from previous paragraph_ ``**`ls /home/ark/.local/share/ark-core/<network>/snapshots`** _to list files. Let’s run this to append data to previous backup:_
 
 ```text
-ark snapshot:dump --blocks=1-7739750//replace 1-7739750 with your own folder from previously created snapshot.
+ark snapshot:dump --blocks=1-7739750
+//replace 1-7739750 with your own folder from previously created snapshot.
 ```
 
 You should get message like this if you ran it correctly:
@@ -398,7 +432,10 @@ ark relay:stop
 After that we’ll run the restore command:
 
 ```text
-ark snapshot:restore --blocks=<folder name>//replace <folder name> with your previously made latest snapshot in our case lets use 1-7739894 so we'd run this command to restore:ark snapshot:restore --blocks=1-7739894
+ark snapshot:restore --blocks=<folder name>
+//replace <folder name> with your previously made latest snapshot 
+in our case lets use 1-7739894 so we'd run this command to restore:
+ark snapshot:restore --blocks=1-7739894
 ```
 
 You will see a message similar to this. It will take some time, so leave it running:
@@ -434,7 +471,14 @@ After that, we’ll make use of Snapshot command _**rollback**_ — for this cas
 ### Rolling back to a specific height <a id="bbff"></a>
 
 ```text
-ark snapshot:rollback --height=<height>//where we replace <height> with a height we want to rollback to and start to sync from the network. In our case lets say current blockchain height is 7,740,000 and if we want to go back 2,000 blocks we'll input 7739000 in <height> so we'll run. We'd run:ark snapshot:rollback --height=7738000
+ark snapshot:rollback --height=<height>
+
+//where we replace <height> with a height we want to rollback to and 
+start to sync from the network. In our case lets say current 
+blockchain height is 7,740,000 and if we want to go back 2,000 blocks 
+we'll input 7739000 in <height> so we'll run. We'd run:
+
+ark snapshot:rollback --height=7738000
 ```
 
 You’ll see a message similar to this:
@@ -457,13 +501,21 @@ ark relay:start
 ### Rolling back to a specific number of blocks <a id="7b90"></a>
 
 ```text
-ark snapshot:rollback --number=<number>//where we replace <number> with a number of blocks we want to rollback to and start to sync from the network. In our case lets say current blockchain height is 7,740,000 and if we want to go back 2,000 blocks we'll input 2000 in <number> so we'll run. We'd run:ark snapshot:rollback --number=2000
+ark snapshot:rollback --number=<number>
+
+//where we replace <number> with a number of blocks we want to 
+rollback to and start to sync from the network. In our case lets say 
+current blockchain height is 7,740,000 and if we want to go back 
+2,000 blocks we'll input 2000 in <number> so we'll run. We'd run:
+
+ark snapshot:rollback --number=2000
 ```
 
 You’ll see a message similar to this:
 
 ```text
-ark snapshot:rollback --number=2000[2019-03-20 13:49:18][INFO]: Snapshots: Database connected
+ark snapshot:rollback --number=2000
+[2019-03-20 13:49:18][INFO]: Snapshots: Database connected
 [2019-03-20 13:49:18][INFO]: Starting the process of blockchain rollback to block height of 7,738,000
 [2019-03-20 13:49:18][INFO]: 1259 transactions from rollbacked blocks safely exported to file rollbackTransactionBackup.7738001.7740137.json
 [2019-03-20 13:49:18][INFO]: Rolling back chain to last finished round 151,725 with last block height 7,737,975
@@ -488,7 +540,11 @@ SCP allows files to be copied to / from / between different hosts. It uses SSH p
 If you want to copy files from one server to another, we’ll run this command where we need to replace `<network>` with the network you operate on \(in our example mainnet\), `<folder-name>` with snapshot name we are copying in our example it will be 1–7739894, `<username>` with username of the server we are copying to and `<IP>` with its IP address:
 
 ```text
-scp -r /home/ark/.local/share/ark-core/<network>/snapshots/<folder-name> <username>@IP:/home/ark/.local/share/ark-core/<network>/snapshots/<folder-name>// to put this into a practical example:scp -r /home/ark/.local/share/ark-core/mainnet/snapshots/1–7739894 ark@111.11.11.1:/home/ark/.local/share/ark-core/mainnet/snapshots/1–7739894
+scp -r /home/ark/.local/share/ark-core/<network>/snapshots/<folder-name> <username>@IP:/home/ark/.local/share/ark-core/<network>/snapshots/<folder-name>
+
+// to put this into a practical example:
+
+scp -r /home/ark/.local/share/ark-core/mainnet/snapshots/1–7739894 ark@111.11.11.1:/home/ark/.local/share/ark-core/mainnet/snapshots/1–7739894
 ```
 
 After this, you will enter `yes` to confirm you want to connect to the server and add it to the list of known hosts.

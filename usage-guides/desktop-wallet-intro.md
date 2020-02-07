@@ -180,7 +180,12 @@ Message signing and verifying is all done under the **Sign** tab of the wallet d
 With a signed message, others can verify that a given message and signature combination originate from you.
 
 * **Input your security details and the message to sign, then click** _**Sign**_
+
+![](../.gitbook/assets/signmessage.png)
+
 * **Your signed message will appear under the Sign tab of the wallet detail page**
+
+![](../.gitbook/assets/signedmessages.png)
 
 #### Verifying a Message <a id="verifying-a-message"></a>
 
@@ -195,26 +200,58 @@ The ARK network will only know your public key once you have sent a transaction.
 For demonstration purposes, the images below are shown from the perspective of a second wallet, assuming the necessary details to verify the message were provided to the verifying user.
 
 * **Enter the message to verify, the public key of the wallet which was used to sign the message and the resulting signature, then click** _**Next**_
+
+![](../.gitbook/assets/verifymessage.png)
+
 * **See whether the message was successfully verified or not**
+
+![](../.gitbook/assets/verifiedmessage.png)
 
 ### Register as a Delegate <a id="register-as-a-delegate"></a>
 
 Registering as a delegate is a simple transaction. It provides network nodes with a record of the sending address opening itself to accept votes from other wallets. You can only vote for an address that was registered in this fashion.
 
 * **Expose more options in the wallet detail page by clicking the icon in the header**
+
+![](../.gitbook/assets/moreicon.png)
+
 * **Click the** _**Register delegate**_ **button**
+
+![](../.gitbook/assets/registerdelegatebutton.png)
+
 * **Enter your desired Username, Transaction fee and security details; then click** _**Next**_
+
+![](../.gitbook/assets/delegateregistration.png)
+
 * **Verify the delegate registration transaction details and Submit, Cancel or Save it by clicking either** _**Send**_**,** _**Back**_ **or** _**Save**_
+
+![](../.gitbook/assets/submitdelegateregistration.png)
 
 ### Register a Second Passphrase <a id="register-a-second-passphrase"></a>
 
 Security is critical. By issuing a second signature transaction, you tell network nodes to verify that every transaction coming from your wallet is also signed by another Passphrase.
 
 * **Show more options in the wallet detail page by clicking the icon in the header**
+
+![](../.gitbook/assets/moreicon.png)
+
 * **Click the** _**Second passphrase**_ **button**
+
+![](../.gitbook/assets/secondsignaturebutton.png)
+
 * **Save your 12-word BIP39 second Passphrase and click** _**Next**_
+
+![](../.gitbook/assets/secondsignaturegeneration.png)
+
 * **Prove that you have saved your second Passphrase, select your desired transaction fee, enter your security details and click** _**Next**_
+
+![](../.gitbook/assets/secondsignatureverification.png)
+
 * **Verify the second signature transaction details and Submit, Cancel or Save it by clicking either** _**Send**_**,** _**Back**_ **or** _**Save**_
+
+![](../.gitbook/assets/submitsecondsignature.png)
+
+## Contact Interface
 
 The application provides you a neat interface to add addresses to your contact list. This feature enables you to aggregate all of the addresses which you may transact with or be interested in.
 
@@ -222,10 +259,23 @@ The application provides you a neat interface to add addresses to your contact l
 
 You can access the contact creation menu by first clicking on the contact icon in the wallet's navigation bar which will expose your contact list.
 
+![](../.gitbook/assets/contacts.png)
+
 * **Enter the contact's address and click** _**Next**_
+
+![](../.gitbook/assets/contactdetails.png)
+
 * _\(Optional\)_ **Enter a name for the contact and click \*Done**
+
+![](../.gitbook/assets/contactconfirmation.png)
+
 * **You can now view that contact's activity**
+
+![](../.gitbook/assets/contactactivity.png)
+
 * **And have access to the contact's activity through the contact interface**
+
+![](../.gitbook/assets/contactinterface.png)
 
 ## Changing the Application's Settings <a id="changing-the-application-s-settings"></a>
 
@@ -234,6 +284,8 @@ There's a bunch of options for how you may customize the look, behaviour, and fe
 ### Network Options <a id="network-options"></a>
 
 Network settings can be modified by clicking on the cloud icon in the navigation bar; bringing up a side menu. In the Network settings menu, you may select another peer to use for fetching transaction and wallet updates. Also, the menu offers some valuable information about the network and advanced configuration options in the **Network Overview** section.
+
+![](../.gitbook/assets/networkoptions.png)
 
 ### Appearance Options <a id="appearance-options"></a>
 
@@ -249,9 +301,13 @@ In the first menu, which you access by clicking the settings icon of the navigat
 * Toggle the display of the price chart on the dashboard.
 * Reset the wallet's data.
 
+{% hint style="danger" %}
 WARNING
 
 Resetting the wallet's data should almost never be done. It will permanently delete all of your profiles, wallets, contacts, addresses and all other data associated with the application.
+{% endhint %}
+
+![](../.gitbook/assets/currentsettings.png)
 
 #### Changing Profile Settings <a id="changing-profile-settings"></a>
 
@@ -266,4 +322,10 @@ There are a few profile settings you can affect in this way, namely:
 * The language for the 12 BIP39 passphrase words.
 * The default currency for this profile.
 * Which avatar to use for this profile.
+
+![](../.gitbook/assets/profilesettings.png)
+
+##  Security
+
+If you discover a security vulnerability within this project, please send an e-mail to [security@ark.io](mailto:security@ark.io). All security vulnerabilities will be promptly addressed.
 
