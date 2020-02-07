@@ -1,8 +1,13 @@
+---
+description: >-
+  Here you will find overviews of each minor release of ARK Core, and
+  corresponding documentation on the changes, migrations and upgrade, and
+  descriptions on design decisions and further improvements.
+---
+
 # Introduction
 
-Here you will find overviews of each minor release of ARK Core, and corresponding documentation on the changes, migrations and upgrade, and descriptions on design decisions and further improvements.
-
-ARK adheres to standard versioning that using the Semver model:
+ARK adheres to standard versioning that using the [Semver](https://semver.org/) model:
 
 * **MAJOR**: 2.0.0 was the initial non-backwards compatible release on the Mainnet.
 * **MINOR**: 2.x.0 will add new functionality and cover bigger changes and new features that introduce higher end impacts \(2.1.0, 2.2.0, …\).
@@ -12,7 +17,7 @@ ARK adheres to standard versioning that using the Semver model:
 
 The official changelog of ARK Core is hosted in the [core repository](https://github.com/ARKEcosystem/core/blob/master/CHANGELOG.md).
 
-### Channels <a id="channels"></a>
+## Channels
 
 Core is released in 2 different channels via `npm` to have different versions for `devnet` and `mainnet` during development.
 

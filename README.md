@@ -1,8 +1,8 @@
 # Getting Started
 
-The tutorials are a collection for all ARK Ecosystem guides, code snippets, and more. It contains easy guides to help you get started with different parts of ARK Core and the ARK API. It does not provide a complete technical reference, merely quickstart guides.
+The tutorials are a collection for all ARK Ecosystem guides, code snippets, and more. It contains easy guides to help you get started with different parts of ARK Products and services. It does not provide a [complete technical reference](https://learn.ark.dev), merely user and migration and update guides.
 
-Use the sidebar to navigate or use the search functionality in the top-right corner.
+Use the sidebar to navigate or use the search functionality in the top-right corner. Pick a topic:
 
 {% page-ref page="blockchain-basics/" %}
 
