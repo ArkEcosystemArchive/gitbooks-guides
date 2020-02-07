@@ -24,6 +24,12 @@ Use the sidebar to navigate or use the search functionality in the top-right cor
 
 {% page-ref page="devops-guides/untitled.md" %}
 
+{% page-ref page="devops-guides/usinge-core-command-line-interface.md" %}
+
+{% page-ref page="devops-guides/installing-plugins-dapps.md" %}
+
+{% page-ref page="devops-guides/core-environment-variables.md" %}
+
 ## Release And Migration Guides
 
 {% page-ref page="core-releases/versions/" %}
