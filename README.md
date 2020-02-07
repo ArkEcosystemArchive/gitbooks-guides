@@ -26,5 +26,7 @@ Use the sidebar to navigate or use the search functionality in the top-right cor
 
 ## Release And Migration Guides
 
+{% page-ref page="core-releases/versions/" %}
+
 
 
