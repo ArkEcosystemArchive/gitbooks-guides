@@ -23,6 +23,7 @@
 * [How to Secure Your ARK Node](devops-guides/untitled.md)
 * [Usinge Core Command Line Interface](devops-guides/usinge-core-command-line-interface.md)
 * [Installing Plugins/dApps](devops-guides/installing-plugins-dapps.md)
+* [Core Environment Variables](devops-guides/core-environment-variables.md)
 
 ## Have a question?
 
