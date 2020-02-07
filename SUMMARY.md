@@ -25,7 +25,7 @@
 * [Installing Plugins/dApps](devops-guides/installing-plugins-dapps.md)
 * [Core Environment Variables](devops-guides/core-environment-variables.md)
 
-## CORE RELEASES
+## Upgrade Guides <a id="core-releases"></a>
 
 * [Introduction](core-releases/releases.md)
 * [Versions](core-releases/versions/README.md)
