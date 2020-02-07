@@ -14,13 +14,9 @@ Download the wallet from the [App Store](https://itunes.apple.com/us/app/mobile-
 
 Once you load the application you will be met with this screen:
 
-![](../.gitbook/assets/arkwallet.png)
-
 The content of each slide shares some details about some security and usability features of the app.
 
 After reading through the welcome slides, you will be able to create a profile.
-
-![](../.gitbook/assets/arkwallet4.png)
 
 After you hit the _**Create A Profile**_ button, you will be prompted to create a six-digit PIN confirm it afterward.
 
@@ -28,11 +24,7 @@ After you hit the _**Create A Profile**_ button, you will be prompted to create 
 It is imperative that you remember this PIN.
 {% endhint %}
 
-![](../.gitbook/assets/arkwallet5.png)
-
 Your new profile must then be assigned a name and a network. Mainnet is the one where your ARK tokens will be sent to and from. The Devnet is used for team members and contributors wishing to test additional functionality and should not be used. The remainder of this document assumes you've created a profile that uses the Mainnet.
-
-![](../.gitbook/assets/arkwallet6.png)
 
 Once you have entered your name, you can sign in by touching the profile you created and by entering the PIN you created earlier. From there, you can click on the bottom-right button to either create or import a wallet. If you are importing a wallet, click [here](). If you are creating a new wallet, continue reading.
 
@@ -48,21 +40,13 @@ After hitting _**Next**_, you will be asked to verify your Secret Passphrase. Yo
 
 The next screen will show you the amount of ARK tokens you have in your wallets, your shareable Public Address, the Market Value of ARK in USD, Satoshis, and the 24-hour Change.
 
-![](../.gitbook/assets/arkwallet8.png)
-
-![](../.gitbook/assets/arkwallet9.png)
-
 ## Importing a Wallet <a id="importing-a-wallet"></a>
 
 If you choose to import a wallet and follow the prompts, you will have two options to import your wallet: QR Code or by putting in your secret passphrase or address manually.
 
-{% hint style="danger" %}
 WARNING
 
 If you decide to copy and paste your information into the app, make sure your device does not add a space after your passphrase or address. If a space is there, it will create a new wallet and not import your wallet.
-{% endhint %}
-
-![](../.gitbook/assets/arkwallet10.png)
 
 ## The ARK Wallet <a id="the-ark-wallet"></a>
 
@@ -84,13 +68,7 @@ Choosing _**Wallets**_ will place you at the main ARK Wallet balance screen. Aft
   * You can save contacts by name and ARK address for quicker sending/receiving
 * Sign Out
 
-![](../.gitbook/assets/arkwallet13.png)
-
-![](../.gitbook/assets/arkwallet12.png)
-
 If you want to view an existing wallet and the transaction history, you will need to touch the rectangle\(s\) right below the _**Total Balance**_ text.
-
-![](../.gitbook/assets/arkwallet14.png)
 
 Once inside a wallet, you can view incoming and receiving transaction history, the public address, the ARK wallet balance and by touching the vertical ellipsis you can:
 
@@ -100,21 +78,11 @@ Once inside a wallet, you can view incoming and receiving transaction history, t
 * Backup your Wallet
 * Delete your wallet
 
-![](../.gitbook/assets/arkwallet15.png)
-
 ## Voting <a id="voting"></a>
 
 To begin voting, we need ARK in our wallets. Once you've transferred ARK to your wallet, you will want to click on the wallet that was either imported or generated.
 
-![](../.gitbook/assets/arkwallet14.png)
-
 Once the wallet has been selected, hit the triple bar and choose _**Delegates**_. This will show you the top 51 Active Delegates and the delegates on standby
 
-![](../.gitbook/assets/arkwallet16.png)
-
-![](../.gitbook/assets/arkwallet17.png)
-
 Choosing a Delegate will prompt you to vote for 1 ARK.
-
-![](../.gitbook/assets/arkwallet18.png)
 
