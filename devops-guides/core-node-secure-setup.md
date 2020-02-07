@@ -38,7 +38,7 @@ To start with the ARK Core install process, we recommend that you start with a c
 
 For those who are familiar with Linux and ARK, running these commands will install and initialize ARK Core. Login to your newly created server and run these commands in sequence. There is more detailed information in the section following the commands:
 
-```text
+```bash
 adduser ark
 usermod -aG sudo ark
 su ark
@@ -49,7 +49,7 @@ ark relay:start
 
 _NOTE: if you are going to operate on Devnet, before you start the relay you will need to run this command to switch NPM channels to latest release \(don’t run this on Mainnet\):_
 
-```text
+```bash
 ark config:cli --channel=next
 //only run this on Devnet, before you start relay process with ark  relay:start, DON'T START THIS ON MAINNET
 ```
