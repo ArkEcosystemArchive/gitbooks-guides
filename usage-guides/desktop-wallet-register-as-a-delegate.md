@@ -4,7 +4,7 @@ description: >-
   your delegate proposal.
 ---
 
-# How To Register And Become A Delegate
+# How To Become A Delegate
 
 _**Being an ARK delegate is a serious responsibility, and with great responsibility comes great rewards. Not only in forging rewards, but also the reward of the invaluable knowledge you acquire as you make connections and help secure the ARK blockchain network.**_
 

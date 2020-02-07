@@ -13,7 +13,7 @@
 
 * [How to Use the Desktop Wallet](usage-guides/desktop-wallet-intro.md)
 * [How to Vote/Un-Vote in the Desktop Wallet](usage-guides/desktop-wallet-voting.md)
-* [How To Register And Become A Delegate](usage-guides/desktop-wallet-register-as-a-delegate.md)
+* [How To Become A Delegate](usage-guides/desktop-wallet-register-as-a-delegate.md)
 * [How to Use the Mobile Wallet](usage-guides/mobile-wallet-intro.md)
 * [How to Use the Explorer](usage-guides/explorer-intro.md)
 
