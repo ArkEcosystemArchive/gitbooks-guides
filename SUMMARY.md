@@ -21,6 +21,8 @@
 
 * [How To Setup a New Server Running ARK Core](devops-guides/core-node-secure-setup.md)
 * [How to Secure Your ARK Node](devops-guides/untitled.md)
+* [Usinge Core Command Line Interface](devops-guides/usinge-core-command-line-interface.md)
+* [Installing Plugins/dApps](devops-guides/installing-plugins-dapps.md)
 
 ## Have a question?
 
