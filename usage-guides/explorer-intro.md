@@ -6,9 +6,13 @@ If a blockchain is a highway of transactional records, from the very first to th
 
 Let's begin our journey into the ARK explorer.
 
+![](../.gitbook/assets/mobileblockexploreroverview.1bd0b933.png)
+
 When you first arrive at [explorer.ark.io](https://explorer.ark.io/), you will find some immediately available information.
 
 ## Latest Transactions <a id="latest-transactions"></a>
+
+![](../.gitbook/assets/latesttransactionoverview.dcd9454b.png)
 
 This is a list of the most recent transactions to have been broadcast over the network. Inside each transaction details page, you will be able to view the following information:
 
@@ -21,6 +25,8 @@ This is a list of the most recent transactions to have been broadcast over the n
 * **SmartBridge:** This field indicates the ARK SmartBridge that was used in the transaction. SmartBridges are part of the innovations driving the ARK Ecosystem: it allows for different blockchains to interact with each other. Think of each blockchain as an island with no outside communication. If you work on Ethereum Island and your business partner only works on Bitcoin Island, you can't trade or work together. ARK SmartBridges are like an airstrip, cargo barge, cellphone towers, and internet all rolled into one. You can do business with any of the other islands from any island instantaneously and friction free. A more detailed explanation of SmartBridges can be found in the section [**What are BridgeChains and how to use them**](https://docs.ark.io/basics/how-does-ark-smartbridge-work.html).
 
 ### Latest Blocks <a id="latest-blocks"></a>
+
+![](../.gitbook/assets/latestblockoverview.40aa526b.png)
 
 This is a list of the most recent blocks to have been broadcast over the network. Inside each block details page, you will be able to view the following information:
 
@@ -52,9 +58,16 @@ Across the top of the page, you will also see a list of details about the curren
 
 * **Home:** This will take you back to the ARK explorer home page.
 * **Top Wallets:** This will show you the wallets, ordered high to low by balance. From there, you will be able to see their ranking, wallet address, balance and the percentage of the total supply they own. Currently, the ARK development team holds the most significant portion of ARK, which is used to pay for projects and developers to bring network improvements and community support.
+
+![](../.gitbook/assets/topwallets.8f3aea2a.png)
+
 * **Delegate Monitor:** This shows the current list of delegates and all the votes they've earned. ARK is run by its community, whose members vote for delegates. Delegates, among other things, participate in community matters and forge blocks. The top 51 delegates are allowed to forge. Many delegates rely on community support to maintain their position within the network.
 
+![](../.gitbook/assets/delegatemonitoroverview.0123166d.png)
+
 The delegate monitor shows two tabs: **"Active"** and **"Standby"**. "Active" will list the current top 51 active delegates, an overview of blocks recently forged, blocks missed, delegates who are not forging and those delegates waiting to forge the next blocks.
+
+![](../.gitbook/assets/delegateoverview.png)
 
 If you click on a delegate's username, you will be taken to the delegate's wallet address page and see the following information:
 
