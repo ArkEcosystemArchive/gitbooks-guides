@@ -1,4 +1,4 @@
-# Releases
+# Introduction
 
 Here you will find overviews of each minor release of ARK Core, and corresponding documentation on the changes, migrations and upgrade, and descriptions on design decisions and further improvements.
 

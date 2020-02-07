@@ -27,7 +27,7 @@
 
 ## CORE RELEASES
 
-* [Releases](core-releases/releases.md)
+* [Introduction](core-releases/releases.md)
 * [Versions](core-releases/versions/README.md)
   * [v2.5](core-releases/versions/summary.md)
   * [v2.4](core-releases/versions/summary-1.md)
