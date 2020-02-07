@@ -25,6 +25,17 @@
 * [Installing Plugins/dApps](devops-guides/installing-plugins-dapps.md)
 * [Core Environment Variables](devops-guides/core-environment-variables.md)
 
+## CORE RELEASES
+
+* [Releases](core-releases/releases.md)
+* [Versions](core-releases/versions/README.md)
+  * [v2.5](core-releases/versions/summary.md)
+  * [v2.4](core-releases/versions/summary-1.md)
+  * [v2.3](core-releases/versions/summary-2.md)
+  * [v2.2](core-releases/versions/summary-3.md)
+  * [v2.1](core-releases/versions/summary-4.md)
+  * [v2.0](core-releases/versions/summary-5.md)
+
 ## Have a question?
 
 * [Whitepaper](https://whitepaper.ark.io)
