@@ -12,11 +12,15 @@
 ## Usage Guides
 
 * [How to Use the Desktop Wallet](usage-guides/desktop-wallet-intro.md)
-* [How to Use the Mobile Wallet](usage-guides/mobile-wallet-intro.md)
 * [How to Vote/Un-Vote in the Desktop Wallet](usage-guides/desktop-wallet-voting.md)
 * [How To Register And Become A Delegate](usage-guides/desktop-wallet-register-as-a-delegate.md)
+* [How to Use the Mobile Wallet](usage-guides/mobile-wallet-intro.md)
 * [How to Use the Explorer](usage-guides/explorer-intro.md)
-* [How To Setup a New Server Running ARK Core](usage-guides/core-node-secure-setup.md)
+
+## DEVOPS GUIDES
+
+* [How To Setup a New Server Running ARK Core](devops-guides/core-node-secure-setup.md)
+* [How to Secure Your ARK Node](devops-guides/untitled.md)
 
 ## Have a question?
 

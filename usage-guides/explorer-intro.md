@@ -1,3 +1,9 @@
+---
+description: >-
+  Block explorers give (anyone) access to the information contained within that
+  blockchain.
+---
+
 # How to Use the Explorer
 
 ## What Is a Block Explorer? <a id="what-is-a-block-explorer"></a>

@@ -1,3 +1,9 @@
+---
+description: >-
+  The ARK Desktop Wallet is an application which allows you to manage ARK
+  transactions.
+---
+
 # How to Use the Desktop Wallet
 
 ## What Is It? <a id="what-is-it"></a>

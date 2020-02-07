@@ -1,26 +1,30 @@
-# How To Register And Become A Delegate
+---
+description: >-
+  This guide will help you get started with registering a delegate and posting
+  your delegate proposal.
+---
 
-## ARK: How To Register And Become A Delegate
+# How To Register And Become A Delegate
 
 _**Being an ARK delegate is a serious responsibility, and with great responsibility comes great rewards. Not only in forging rewards, but also the reward of the invaluable knowledge you acquire as you make connections and help secure the ARK blockchain network.**_
 
-This guide will help you get started with registering a delegate and posting your delegate proposal.
-
 > **Make your proposal at the community run website\*:** [**https://arkdelegates.io/**](https://arkdelegates.io/)
 
-_\* ARK Delegates is a community ran project and we are not responsible for its content._
-
-_“The price of greatness is responsibility!” — Winston Churchill_
+{% hint style="success" %}
+_ARK Delegates is a community ran project and we are not responsible for its content.  
+  
+“The price of greatness is responsibility!” — Winston Churchill_
+{% endhint %}
 
 ## How To Register Your Own Delegate? <a id="3b08"></a>
 
 The first step in your journey to becoming an ARK Delegate is to register your unique delegate name on the blockchain. This name serves as your identifier so others will be able to vote for you.
 
-### 1. Download latest Desktop Wallet <a id="1a5a"></a>
+### STEP 1. Download latest Desktop Wallet <a id="1a5a"></a>
 
 [**Download**](https://wallet.ark.io/) latest ARK Desktop Wallet for your OS.
 
-### 2. Prepare your wallet address <a id="dd70"></a>
+### STEP 2. Prepare your wallet address <a id="dd70"></a>
 
 Next, you will use one of your ARK addresses \(or create a new one\) that will become your delegate address. For this guide, we will create a new address and illustrate all of the steps involved. Our delegate will be created on the Development Network or _Devnet_ \(_you can reproduce same steps on other networks such as the Public Network — Mainnet or other private / public Bridgechains_\).
 
@@ -56,7 +60,7 @@ After clicking ‘**Done**’ you will need to add DARK \(or ARK\) coins to your
 
 > You can request DARK \(Development coin\) in our [**public Slack**](https://ark.io/slack) \(channel \#devnet\) or on DARK faucet site ran by one of our delegates at [**https://devnet.money/**](https://devnet.money/).
 
-### 3. Register your delegate name <a id="a7d5"></a>
+### STEP 3. Register your delegate name <a id="a7d5"></a>
 
 Once you have coins in your wallet you can register your delegate. This is done by clicking the 3 vertical dots in the upper right corner. Additional options appear including the ‘_**Register delegate**_’ button.
 
@@ -80,13 +84,13 @@ After next wallet restart, you will also see your delegate name in the upper cor
 
 We are now ready to go on to the next step — setting up your server.
 
-### 4. Setting up new ARK Core server <a id="3ee7"></a>
+### STEP 4. Setting up new ARK Core server <a id="3ee7"></a>
 
 As a final step, you will need to prepare and configure your server for it to be ready to process blocks and transactions, if you are voted into the active delegation. For that, we have prepared a detailed guide for you to follow here:
 
 > _If you run into any kind of troubles don’t hesitate to join our_ [_**ARK Slack**_](https://ark.io/slack)_, either go to \#delegate, \#devnet, or \#help channel._
 
-### 5. Registering 2nd passphrase \(optional\) <a id="f43e"></a>
+### STEP 5. \(optional\) Registering 2nd passphrase <a id="f43e"></a>
 
 If you will be running a delegate, we strongly recommend registering a 2nd passphrase for your wallet. This optional step can prevent catastrophe if an unauthorized person gains access to your server where your delegate is running \(and if you set a plain passphrase on the server\). If a hacker gets access to your 1st passphrase they won’t be able to steal funds if you have registered a 2nd passphrase, since both are needed to sign transactions.
 

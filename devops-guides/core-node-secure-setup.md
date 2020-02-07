@@ -1,8 +1,13 @@
+---
+description: >-
+  Setting up the new ARK Core has never been easier! If you want to have your
+  own instance up and running, this guide will help you set one up in a few
+  minutes with some basic Linux knowledge.
+---
+
 # How To Setup a New Server Running ARK Core
 
-_**Setting up the new ARK Core has never been easier! If you want to have your own instance up and running, this guide will help you set one up in a few minutes with some basic Linux knowledge.**_
-
-This guide is structured in a few sections:
+**This guide is structured in a few sections:**
 
 * _**1. Short Guide for Setting Up Relay Node**_ —for those that have some basic knowledge about ARK and Linux, this is a simple, command based guide to get you up and running in no time.
 * _**2. Longer Guide For Setting Up Relay Node**_ — this is a more in depth step by step guide that covers all aspects of setting up a Relay Node.
@@ -12,7 +17,11 @@ This guide is structured in a few sections:
 * _**6. Rollback Blockchain**_ — if you want to rollback your blockchain to some previous state \(eg. you forked or are testing something\).
 * _**7. Copying Snapshots Between Servers**_ — if you want to move a snapshot to a different server, either as independent backup or get your second node up and running quickly.
 
-> **Extra security guide**: if you want to secure your server with additional security countermeasures, please give this “[How To Secure Your ARK Node](https://docs.ark.io/tutorials/node/secure.html)” guide a read.
+{% hint style="info" %}
+Extra security guide: if you want to secure your server with additional security countermeasures, please give this **“How To Secure Your ARK Node”** guide a read.
+{% endhint %}
+
+{% page-ref page="untitled.md" %}
 
 ## Preparations <a id="f374"></a>
 

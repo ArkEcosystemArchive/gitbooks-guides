@@ -1,10 +1,14 @@
-# How to Vote/Un-Vote in the Desktop Wallet
+---
+description: >-
+  In this guide, we’ll show you how to vote for a delegate, or un-vote a
+  delegate if you want to change your vote.
+---
 
-You can use your ARK to vote or un-vote a delegate. In this guide, we’ll show you how to vote for a delegate, or un-vote a delegate if you want to change your vote.
+# How to Vote/Un-Vote in the Desktop Wallet
 
 ## General Information <a id="general-information"></a>
 
-Some basic voting info:
+You can use your ARK to vote or un-vote a delegate. Some basic voting info:
 
 * _1 ARK address can vote for only one delegate at a time_
 

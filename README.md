@@ -6,15 +6,23 @@ Use the sidebar to navigate or use the search functionality in the top-right cor
 
 {% page-ref page="blockchain-basics/" %}
 
+## User Guides And Manuals
+
 {% page-ref page="usage-guides/desktop-wallet-intro.md" %}
+
+{% page-ref page="usage-guides/desktop-wallet-voting.md" %}
+
+{% page-ref page="usage-guides/desktop-wallet-register-as-a-delegate.md" %}
 
 {% page-ref page="usage-guides/mobile-wallet-intro.md" %}
 
 {% page-ref page="usage-guides/explorer-intro.md" %}
 
-{% page-ref page="usage-guides/desktop-wallet-register-as-a-delegate.md" %}
+## Devops Guides
 
+{% page-ref page="devops-guides/core-node-secure-setup.md" %}
 
+{% page-ref page="devops-guides/untitled.md" %}
 
 
 

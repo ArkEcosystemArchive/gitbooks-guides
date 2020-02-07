@@ -1,14 +1,18 @@
+---
+description: >-
+  The ARK Mobile Wallet is an easy to use, portable application. It enables you
+  to manage all of your ARK accounts and view information about delegates.
+---
+
 # How to Use the Mobile Wallet
-
-The ARK Mobile Wallet is an easy to use, portable application. It enables you to manage all of your ARK accounts and view information about delegates. The wallet also provides an interface to add contacts by their address, which can save you some time when making transactions.
-
-The application is built using the Ionic Framework, which enables the code base to be reused, keeping similar functionally and looks, for both iOS and Android.
 
 ## Installation <a id="installation"></a>
 
 Like any useful application, you will be able to find the ARK Mobile Wallet application in your phone's store. It is entirely free to download and use.
 
 Download the wallet from the [App Store](https://itunes.apple.com/us/app/mobile-ark/id1324625967?ls=1&mt=8) or the [Google Play Store](https://play.google.com/store/apps/details?id=io.ark.wallet.mobile).
+
+The application is built using the Ionic Framework, which enables the code base to be reused, keeping similar functionally and looks, for both iOS and Android.
 
 ## Starting the ARK Wallet <a id="starting-the-ark-wallet"></a>
 
