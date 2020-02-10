@@ -1,6 +1,6 @@
 ---
 description: >-
-  Here you will find overviews of ARK Core releases, and corresponding
+  Here you will find overviews of ARK Core releases and corresponding
   documentation on the changes, migrations and upgrade, and descriptions on
   design decisions and further improvements.
 ---
