@@ -29,6 +29,7 @@
 
 * [Introduction](core-releases/releases.md)
 * [Versions](core-releases/versions/README.md)
+  * [v2.6](core-releases/versions/v2.6.md)
   * [v2.5](core-releases/versions/summary.md)
   * [v2.4](core-releases/versions/summary-1.md)
   * [v2.3](core-releases/versions/summary-2.md)
