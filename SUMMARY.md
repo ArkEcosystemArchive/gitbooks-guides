@@ -1,13 +1,6 @@
 # Table of contents
 
 * [Getting Started](README.md)
-* [Introduction To Blockchain](blockchain-basics/README.md)
-  * [When Do You Need a Blockchain?](blockchain-basics/when.md)
-  * [Why Do Blockchains Exist?](blockchain-basics/why.md)
-  * [How Secure Is a Blockchain?](blockchain-basics/security.md)
-  * [Anonymous vs Untraceable](blockchain-basics/privacy.md)
-  * [Understanding Transactions and Block Propagation](blockchain-basics/block-propagation.md)
-  * [Understanding Consensus Models](blockchain-basics/consensus-models.md)
 
 ## Usage Guides
 
