@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Getting Started](README.md)
+* [Blockchain Concepts 101](https://answers.ark.dev/blockchain-concepts-101/introduction-to-blockchain)
 
 ## Usage Guides
 
@@ -32,7 +33,6 @@
 
 ## Have a question?
 
-* [Blockchain Concepts 101](https://answers.ark.dev/blockchain-concepts-101/introduction-to-blockchain)
 * [ARK Whitepaper](https://whitepaper.ark.io)
 * [Ask in our Public Slack](https://ark.io/slack)
 * [Official ARK.io Website](https://ark.io)
