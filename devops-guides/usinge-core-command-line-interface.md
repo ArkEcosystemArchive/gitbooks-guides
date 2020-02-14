@@ -1,4 +1,4 @@
-# Usinge Core Command Line Interface
+# Using Core Command Line Interface
 
 ## Installation
 
