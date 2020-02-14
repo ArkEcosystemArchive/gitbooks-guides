@@ -4,6 +4,8 @@ The tutorials are a collection for all ARK Ecosystem guides, code snippets, and 
 
 Use the sidebar to navigate or use the search functionality in the top-right corner. Pick a topic:
 
+{% page-ref page="blockchain-basics/" %}
+
 ## User Guides And Manuals
 
 {% page-ref page="usage-guides/desktop-wallet-intro.md" %}
@@ -21,8 +23,6 @@ Use the sidebar to navigate or use the search functionality in the top-right cor
 {% page-ref page="devops-guides/core-node-secure-setup.md" %}
 
 {% page-ref page="devops-guides/untitled.md" %}
-
-{% page-ref page="devops-guides/how-to-setup-a-node-with-docker.md" %}
 
 {% page-ref page="devops-guides/usinge-core-command-line-interface.md" %}
 

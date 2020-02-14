@@ -1,15 +1,17 @@
 # How To Setup A Node With Docker
 
-## Prerequisites
+## Introduction
+
+Docker is the de facto industry standard for packaging applications into a container. By doing so, all dependencies, such as the language runtimes, operating system, and libraries are combined with the product.
+
+### Prerequisites
 
 Prerequisites to be installed:
 
 * [Docker Engine](https://docs.docker.com/install)
 * [Docker Compose](https://docs.docker.com/compose/install)
 
-## Introduction
-
-Docker is the de facto industry standard for packaging applications into a container. By doing so, all dependencies, such as the language runtimes, operating system, and libraries are combined with the product.
+### Supported Cloud Providers
 
 Different cloud providers offer specific products to host your Docker containers, such as:
 
@@ -24,7 +26,7 @@ Orchestrators with Docker as a first class citizen:
 * [Nomad](https://www.nomadproject.io/)
 * [Mesos](http://mesos.apache.org/)
 
-## Production
+## Production Setup
 
 * ARK Core Production ready Docker images are now available at [Docker Hub](https://hub.docker.com/r/arkecosystem/core)
 
