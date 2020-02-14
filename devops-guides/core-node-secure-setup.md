@@ -5,7 +5,7 @@ description: >-
   minutes with some basic Linux knowledge.
 ---
 
-# How To Setup a New Server Running ARK Core
+# How To Setup a BareMetal Server Running ARK Core
 
 **This guide is structured in a few sections:**
 
@@ -60,7 +60,8 @@ All you need to do is select which network you wish to connect to when prompted 
 
 You can check logs by running `ark relay:log` or `pm2 logs`command. That is it!
 
-_For the list of CLI commands supported by ARK Core please visit :_ [_https://docs.ark.io/guidebook/core/cli.html\#available-commands_](https://docs.ark.io/guidebook/core/cli.html#available-commands)
+_For the list of CLI commands supported by ARK Core please visit :_   
+[https://guides.ark.dev/devops-guides/usinge-core-command-line-interface](https://guides.ark.dev/devops-guides/usinge-core-command-line-interface)
 
 ## 2. Longer Guide for Setting Up a Relay Node <a id="4745"></a>
 
