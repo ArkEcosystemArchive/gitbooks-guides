@@ -13,8 +13,9 @@
 
 ## DEVOPS GUIDES
 
-* [How To Setup a New Server Running ARK Core](devops-guides/core-node-secure-setup.md)
+* [How To Setup a BareMetal Server Running ARK Core](devops-guides/core-node-secure-setup.md)
 * [How to Secure Your ARK Node](devops-guides/untitled.md)
+* [How To Setup A Node With Docker](devops-guides/how-to-setup-a-node-with-docker.md)
 * [Usinge Core Command Line Interface](devops-guides/usinge-core-command-line-interface.md)
 * [Installing Plugins/dApps](devops-guides/installing-plugins-dapps.md)
 * [Core Environment Variables](devops-guides/core-environment-variables.md)
