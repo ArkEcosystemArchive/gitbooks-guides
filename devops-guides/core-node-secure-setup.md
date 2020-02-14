@@ -5,7 +5,7 @@ description: >-
   minutes with some basic Linux knowledge.
 ---
 
-# How To Setup a BareMetal Server Running ARK Core
+# How To Setup a New Server Running ARK Core
 
 **This guide is structured in a few sections:**
 
