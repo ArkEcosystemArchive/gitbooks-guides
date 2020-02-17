@@ -181,11 +181,13 @@ docker exec -it core-$NETWORK sudo apk add make gcc g++ git python
 docker exec -it core-$NETWORK ark update
 ```
 
-Updates and all changes made to the containers are kept even on container or host restart. :::
+{% hint style="info" %}
+Updates and all changes made to the containers are kept even on container or host restart.
+{% endhint %}
 
 #### Update is also possible by destroying and running Core container from scratch, so it downloads the latest image.
 
-Make sure you destroy only Core container in order to keep your database and avoid syncing the blockchain from zero block. The commands example below does it. :::
+Make sure you destroy only Core container in order to keep your database and avoid syncing the blockchain from zero block. The commands example below does it. 
 
 ```text
 cd docker/production/$NETWORK 
@@ -212,7 +214,7 @@ This command creates a new directory \(`docker`\) that contains 1 folder per net
 This configuration is well suited when you are not developing ARK Core, but instead working with the API. By tearing down the PostgreSQL container, you reset the Nodes blockchain.
 
 {% hint style="info" %}
-PostgreSQL is run in a separate container and it's port gets mapped to your `localhost`, so you should not have PostgreSQL running locally. :::
+PostgreSQL is run in a separate container and it's port gets mapped to your `localhost`, so you should not have PostgreSQL running locally.
 {% endhint %}
 
 ```text
@@ -236,7 +238,7 @@ docker-compose up -d
 When a container is built, all files are copied inside the container. It cannot interact with the host's filesystem unless a directory is specifically [mounted](https://docs.docker.com/storage/volumes/) during container start. This configuration works well when developing ARK Core itself, as you do not need to rebuild the container to test your changes.
 
 {% hint style="success" %}
-Along with PostgreSQL container, now you also have a NodeJS container which mounts your local ark-core git folder inside the container and installs all NPM prerequisites. :::
+Along with PostgreSQL container, now you also have a NodeJS container which mounts your local ark-core git folder inside the container and installs all NPM prerequisites.
 {% endhint %}
 
 ```text
