@@ -36,27 +36,7 @@ Orchestrators with Docker as a first class citizen:
 ARK Core Production ready Docker images are now available at [Docker Hub](https://hub.docker.com/r/arkecosystem/core)
 {% endhint %}
 
-### Get The Needed Docker Files
-
-The code sample below downloads the needed files from our official [GitHub Core repository](https://github.com/ArkEcosystem/core/tree/master/docker/production). You can skip this step, if you already have a cloned Core repository.   
-You can change  **mainnet** to **devnet** in order to download dockerfiles for the Core Devnet network.
-
-```bash
-mkdir mainnet &&
-cd mainnet &&
-curl -sOJ https://raw.githubusercontent.com/ARKEcosystem/core/master/docker/production/mainnet/docker-compose.yml &&
-curl -sOJ https://raw.githubusercontent.com/ARKEcosystem/core/master/docker/production/mainnet/mainnet.env
-```
-
 ### How To Run a Relay Node
-
-You can work with the docker files from our official Core repository. To access the files you need to clone the repository \(see the command below\) or download the files [from here](https://github.com/ArkEcosystem/core/tree/master/docker/production).
-
-```bash
-git clone https://github.com/ArkEcosystem/core
-```
-
-After getting the files, we need to 
 
 ```text
 cd docker/production/$NETWORK     # (NETWORK = devnet || mainnet)
@@ -181,13 +161,11 @@ docker exec -it core-$NETWORK sudo apk add make gcc g++ git python
 docker exec -it core-$NETWORK ark update
 ```
 
-{% hint style="info" %}
-Updates and all changes made to the containers are kept even on container or host restart.
-{% endhint %}
+Updates and all changes made to the containers are kept even on container or host restart. :::
 
 #### Update is also possible by destroying and running Core container from scratch, so it downloads the latest image.
 
-Make sure you destroy only Core container in order to keep your database and avoid syncing the blockchain from zero block. The commands example below does it. 
+Make sure you destroy only Core container in order to keep your database and avoid syncing the blockchain from zero block. The commands example below does it. :::
 
 ```text
 cd docker/production/$NETWORK 
@@ -214,7 +192,7 @@ This command creates a new directory \(`docker`\) that contains 1 folder per net
 This configuration is well suited when you are not developing ARK Core, but instead working with the API. By tearing down the PostgreSQL container, you reset the Nodes blockchain.
 
 {% hint style="info" %}
-PostgreSQL is run in a separate container and it's port gets mapped to your `localhost`, so you should not have PostgreSQL running locally.
+PostgreSQL is run in a separate container and it's port gets mapped to your `localhost`, so you should not have PostgreSQL running locally. :::
 {% endhint %}
 
 ```text
@@ -238,7 +216,7 @@ docker-compose up -d
 When a container is built, all files are copied inside the container. It cannot interact with the host's filesystem unless a directory is specifically [mounted](https://docs.docker.com/storage/volumes/) during container start. This configuration works well when developing ARK Core itself, as you do not need to rebuild the container to test your changes.
 
 {% hint style="success" %}
-Along with PostgreSQL container, now you also have a NodeJS container which mounts your local ark-core git folder inside the container and installs all NPM prerequisites.
+Along with PostgreSQL container, now you also have a NodeJS container which mounts your local ark-core git folder inside the container and installs all NPM prerequisites. :::
 {% endhint %}
 
 ```text
