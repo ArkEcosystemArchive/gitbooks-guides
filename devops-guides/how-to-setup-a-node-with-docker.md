@@ -36,7 +36,27 @@ Orchestrators with Docker as a first class citizen:
 ARK Core Production ready Docker images are now available at [Docker Hub](https://hub.docker.com/r/arkecosystem/core)
 {% endhint %}
 
+### Get The Needed Docker Files
+
+The code sample below downloads the needed files from our official [GitHub Core repository](https://github.com/ArkEcosystem/core/tree/master/docker/production). You can skip this step, if you already have a cloned Core repository.   
+You can change  **mainnet** to **devnet** in order to download dockerfiles for the Core Devnet network.
+
+```bash
+mkdir mainnet &&
+cd mainnet &&
+curl -sOJ https://raw.githubusercontent.com/ARKEcosystem/core/master/docker/production/mainnet/docker-compose.yml &&
+curl -sOJ https://raw.githubusercontent.com/ARKEcosystem/core/master/docker/production/mainnet/mainnet.env
+```
+
 ### How To Run a Relay Node
+
+You can work with the docker files from our official Core repository. To access the files you need to clone the repository \(see the command below\) or download the files [from here](https://github.com/ArkEcosystem/core/tree/master/docker/production).
+
+```bash
+git clone https://github.com/ArkEcosystem/core
+```
+
+After getting the files, we need to 
 
 ```text
 cd docker/production/$NETWORK     # (NETWORK = devnet || mainnet)
