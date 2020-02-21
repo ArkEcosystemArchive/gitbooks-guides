@@ -38,28 +38,24 @@ ARK Core Production ready Docker images are now available at [Docker Hub](https:
 
 ### Get The Needed Docker Files
 
-The code sample below downloads the needed files from our official [GitHub Core repository](https://github.com/ArkEcosystem/core/tree/master/docker/production). You can skip this step, if you already have a cloned Core repository.   
-You can change  **mainnet** to **devnet** in order to download dockerfiles for the Core Devnet network.
+The code sample below downloads the needed files from our official [GitHub Core repository](https://github.com/ArkEcosystem/core/tree/master/docker/production).  
+
+{% hint style="info" %}
+`Set NETWORK=mainnet`if you prefer to run a Mainnet node. ``
+{% endhint %}
 
 ```bash
-mkdir mainnet &&
-cd mainnet &&
-curl -sOJ https://raw.githubusercontent.com/ARKEcosystem/core/master/docker/production/mainnet/docker-compose.yml &&
-curl -sOJ https://raw.githubusercontent.com/ARKEcosystem/core/master/docker/production/mainnet/mainnet.env
+NETWORK=devnet
+mkdir ~/$NETWORK 
+cd ~/$NETWORK
+curl -sOJ https://raw.githubusercontent.com/ARKEcosystem/core/master/docker/production/$NETWORK/docker-compose.yml 
+curl -sOJ https://raw.githubusercontent.com/ARKEcosystem/core/master/docker/production/$NETWORK/$NETWORK.env
 ```
 
-### How To Run a Relay Node
+### Running a Relay Node
 
-You can work with the docker files from our official Core repository. To access the files you need to clone the repository \(see the command below\) or download the files [from here](https://github.com/ArkEcosystem/core/tree/master/docker/production).
-
-```bash
-git clone https://github.com/ArkEcosystem/core
 ```
-
-After getting the files, we need to 
-
-```text
-cd docker/production/$NETWORK     # (NETWORK = devnet || mainnet)
+cd ~/$NETWORK     # (NETWORK = devnet || mainnet)
 docker-compose up -d
 ```
 
@@ -76,7 +72,7 @@ Two additional steps are needed to be able to run a forger:
 **Step 1**: `MODE` has to be set to `forger` `(MODE=forger)` in your `$NETWORK.env` file.
 
 ```text
-cd docker/production/$NETWORK     # (NETWORK = devnet || mainnet)
+cd ~/$NETWORK
 sed -i 's/^MODE=relay/MODE=forger/g $NETWORK.env
 ```
 
@@ -96,12 +92,14 @@ This will fire up two separate containers. One for Core itself and another one f
 
 {% hint style="info" %}
 If you prefer to use custom DB Name, DB User and DB Password simply adjust variables **POSTGRES\_PASSWORD, POSTGRES\_USER, POSTGRES\_DB** \(file=docker-compose.yml\) and **CORE\_DB\_PASSWORD, CORE\_DB\_USERNAME** and **CORE\_DB\_DATABASE** \(**file=$NETWORK.env**\) correspondingly. For a full list of Core variables go [here](core-environment-variables.md).
+
+You can also change default log levels by adjusting variables **CORE\_LOG\_LEVEL** and **CORE\_LOG\_LEVEL\_FILE** \(**file=$NETWORK.env**\). Note that _DEBUG_ level will probably add some CPU overhead during network sync.
 {% endhint %}
 
 **In case you want to use a remote PostgreSQL server simply adjust variable `CORE_DB_HOST` in your `$NETWORK.env` and run only Core container:**
 
 ```text
-cd docker/production/$NETWORK     # (NETWORK = devnet || mainnet)
+cd ~/$NETWORK
 docker-compose up -d core
 ```
 
@@ -112,6 +110,7 @@ docker-compose up -d core
 Just execute the following code:
 
 ```text
+cd ~/$NETWORK
 docker-compose down -v
 docker-compose up -d
 ```
@@ -147,7 +146,7 @@ Log files are locally accessible under:
 Alternative way of following the logs would be, by using the command:
 
 ```text
-docker exec -it core-$NETWORK pm2 logs
+docker logs --tail 50 core-$NETWORK -f
 ```
 
 ### **How Do I Start Everything from Scratch?**
@@ -156,10 +155,17 @@ Just use the **`purge_all.sh`** script.
 
 ### How To Build Your Own ARK Core Docker Image
 
+This requires cloning [ARK Core Github repository](https://github.com/ArkEcosystem/core).
+
+```text
+cd ~/
+git clone https://github.com/ArkEcosystem/core
+```
+
 Custom Docker image builds of ARK Core are possible by using the file `docker-compose-build.yml`. Make your own modifications of ARK Core source code and run your custom container by executing:
 
 ```text
-cd docker/production/$NETWORK     # (NETWORK = devnet || mainnet)
+cd ~/core/docker/production/$NETWORK     # (NETWORK = devnet || mainnet)
 docker-compose -f docker-compose-build.yml up -d
 ```
 
@@ -192,7 +198,7 @@ Make sure you destroy only Core container in order to keep your database and avo
 {% endhint %}
 
 ```text
-cd docker/production/$NETWORK 
+cd ~/$NETWORK 
 docker stop core-$NETWORK
 docker rm core-$NETWORK
 docker rmi $(docker images -q)
@@ -219,8 +225,15 @@ This configuration is well suited when you are not developing ARK Core, but inst
 PostgreSQL is run in a separate container and it's port gets mapped to your `localhost`, so you should not have PostgreSQL running locally.
 {% endhint %}
 
+Clone [ARK Core Github repository](https://github.com/ArkEcosystem/core):
+
 ```text
-cd docker/development/$NETWORK     # (NETWORK = testnet || devnet)
+cd ~/
+git clone https://github.com/ArkEcosystem/core
+```
+
+```text
+cd ~/core/docker/development/$NETWORK     # (NETWORK = testnet || devnet)
 docker-compose up
 ```
 
@@ -244,7 +257,7 @@ Along with PostgreSQL container, now you also have a NodeJS container which moun
 {% endhint %}
 
 ```text
-cd docker/development/$NETWORK      # (NETWORK = testnet || devnet)
+cd ~/core/docker/development/$NETWORK      # (NETWORK = testnet || devnet)
 docker-compose up -d
 ```
 
