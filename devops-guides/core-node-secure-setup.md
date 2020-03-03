@@ -21,7 +21,7 @@ description: >-
 Extra security guide: if you want to secure your server with additional security countermeasures, please give this **“How To Secure Your ARK Node”** guide a read.
 {% endhint %}
 
-{% page-ref page="untitled.md" %}
+{% page-ref page="how-to-secure-your-ark-node.md" %}
 
 ## Preparations <a id="f374"></a>
 
