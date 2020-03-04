@@ -209,9 +209,13 @@ docker-compose up -d core
 
 ### Generate the Configurations
 
-ARK Core include several `Dockerfile` and `docker-compose.yml` templates to ease development. They can be used to generate different configurations, depending on the network and token.
+ARK Core includes several `Dockerfile` and `docker-compose.yml` templates to ease the development. They can be used to generate different configurations, depending on the network and token.
 
-For instance, you could use this command:
+For instance, you could use this command from the root core folder:
+
+```bash
+yarn docker ark
+```
 
 This command creates a new directory \(`docker`\) that contains 1 folder per network.
 
@@ -219,7 +223,7 @@ This command creates a new directory \(`docker`\) that contains 1 folder per net
 
 #### **Run a PostgreSQL container while using NodeJS from your local environment.**
 
-This configuration is well suited when you are not developing ARK Core, but instead working with the API. By tearing down the PostgreSQL container, you reset the Nodes blockchain.
+This configuration is well suited when you are not developing ARK Core, **but instead working with the API.** By tearing down the PostgreSQL container, you reset the Nodes blockchain.
 
 {% hint style="info" %}
 PostgreSQL is run in a separate container and it's port gets mapped to your `localhost`, so you should not have PostgreSQL running locally.
@@ -261,7 +265,7 @@ cd ~/core/docker/development/$NETWORK      # (NETWORK = testnet || devnet)
 docker-compose up -d
 ```
 
-_You can now enter your ark-core container and use NodeJS in a Docker container \(Linux environment\)._
+_Enter your ark-core container and use NodeJS in a Docker container \(Linux environment\) with the following command:_
 
 ```text
 docker exec -it ark-$NETWORK-core bash
