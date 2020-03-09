@@ -38,10 +38,10 @@ ARK Core Production ready Docker images are now available at [Docker Hub](https:
 
 ### Get The Needed Docker Files
 
-The code sample below downloads the needed files from our official [GitHub Core repository](https://github.com/ArkEcosystem/core/tree/master/docker/production).  
+The code sample below downloads the needed files from our official [GitHub Core repository](https://github.com/ArkEcosystem/core/tree/master/docker/production).
 
 {% hint style="info" %}
-`Set NETWORK=mainnet`if you prefer to run a Mainnet node. ``
+`Set NETWORK=mainnet`if you prefer to run a Mainnet node. \`\`
 {% endhint %}
 
 ```bash
@@ -54,14 +54,16 @@ curl -sOJ https://raw.githubusercontent.com/ARKEcosystem/core/master/docker/prod
 
 ### Running a Relay Node
 
-```
+```text
 cd ~/$NETWORK     # (NETWORK = devnet || mainnet)
 docker-compose up -d
 ```
 
 This will run two separate containers. One for Core itself and another one for PostgreSQL.
 
+{% hint style="danger" %}
 The public API won't be available until a relay is fully synchronized with the network and blockchain. All requests before this will result in a connection reset because the port is not yet bound to an application.
+{% endhint %}
 
 ### How To Run a Relay and a Forger Node
 
@@ -83,7 +85,7 @@ sed -i 's/^MODE=relay/MODE=forger/g $NETWORK.env
 You will be asked to enter your delegate secret, followed by entering your password twice. Script will create a new folder named `enc`, containing set of encrypted public and private keys.
 
 {% hint style="danger" %}
-Folder **enc** is needed during core container startup. After making sure your **forger** is up and running it is preferably to delete it. The disadvantage of this would be that if you your server gets rebooted or simply core container restarted, you will have repeat step 2. 
+Folder **enc** is needed during core container startup. After making sure your **forger** is up and running it is preferably to delete it. The disadvantage of this would be that if you your server gets rebooted or simply core container restarted, you will have repeat step 2.
 {% endhint %}
 
 #### Now let's run the forger:
@@ -196,7 +198,7 @@ Updates and all changes made to the containers are kept even on container or hos
 #### Option 2: Update is also possible by destroying and running Core container from scratch, so it downloads the latest image.
 
 {% hint style="danger" %}
-Make sure you destroy only Core container in order to keep your database and avoid syncing the blockchain from zero block. The commands example below does this: 
+Make sure you destroy only Core container in order to keep your database and avoid syncing the blockchain from zero block. The commands example below does this:
 {% endhint %}
 
 ```text
@@ -278,3 +280,4 @@ _Need to start everything from scratch and make sure there are no remaining cach
 {% hint style="danger" %}
 **Development files/presets are not Production ready**. Official Production ARK-Core Docker images are now available at [Docker Hub](https://hub.docker.com/r/arkecosystem/core).
 {% endhint %}
+
