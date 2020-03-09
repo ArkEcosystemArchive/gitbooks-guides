@@ -61,7 +61,7 @@ docker-compose up -d
 
 This will run two separate containers. One for Core itself and another one for PostgreSQL.
 
-Remember that the API will be available only after the relay finishes the update. Until there, the container will respond with `Connection reset by peer` to any request made any of its ports. 
+The public API won't be available until a relay is fully synchronized with the network and blockchain. All requests before this will result in a connection reset because the port is not yet bound to an application.
 
 ### How To Run a Relay and a Forger Node
 
@@ -278,4 +278,3 @@ _Need to start everything from scratch and make sure there are no remaining cach
 {% hint style="danger" %}
 **Development files/presets are not Production ready**. Official Production ARK-Core Docker images are now available at [Docker Hub](https://hub.docker.com/r/arkecosystem/core).
 {% endhint %}
-
