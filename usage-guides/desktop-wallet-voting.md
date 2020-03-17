@@ -24,7 +24,7 @@ You can use your ARK to vote or un-vote a delegate. Some basic voting info:
 
 ## Whom to Vote For? <a id="whom-to-vote-for"></a>
 
-Visit [ARK Delegates](https://arkdelegates.io/), our community-run delegate resource, for more information on delegate proposals. From the current list of delegates, vote according to your preferences.
+Visit [ARK Delegates](https://arkdelegates.live), our community-run delegate resource, for more information on delegate proposals. From the current list of delegates, vote according to your preferences.
 
 You can also see the list of currently active delegates on our [delegate monitor](https://explorer.ark.io/delegateMonitor).
 
