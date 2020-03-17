@@ -8,7 +8,7 @@ description: >-
 
 _**Being an ARK delegate is a serious responsibility, and with great responsibility comes great rewards. Not only in forging rewards, but also the reward of the invaluable knowledge you acquire as you make connections and help secure the ARK blockchain network.**_
 
-> **Make your proposal at the community run website\*:** [**https://arkdelegates.io/**](https://arkdelegates.io/)
+> **Make your proposal at the community run website\*:** [**https://arkdelegates.live/**](https://arkdelegates.live)\*\*\*\*
 
 {% hint style="success" %}
 ARK Delegates is a community ran project and we are not responsible for its content.  
