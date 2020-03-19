@@ -89,6 +89,8 @@ We are now ready to go on to the next step — setting up your server.
 
 As a final step, you will need to prepare and configure your server for it to be ready to process blocks and transactions, if you are voted into the active delegation. For that, we have prepared a detailed guide for you to follow here:
 
+{% embed url="https://guides.ark.dev/devops-guides/core-node-secure-setup" %}
+
 > _If you run into any kind of troubles don’t hesitate to join our_ [_**ARK Slack**_](https://ark.io/slack)_, either go to \#delegate, \#devnet, or \#help channel._
 
 ### STEP 5: \(optional\) Registering 2nd passphrase <a id="f43e"></a>
