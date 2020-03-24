@@ -73,7 +73,7 @@ Payment for projects can be made in BTC and/or ARK and payment preference will b
 
 ### Submission Process
 
-Applications should be completed using the ARK Grants Application Template. Please fill out all information as requested, to include your personal contact information for coordination of your application. Applications can be submitted to [grants@ark.io](mailto:grants@ark.io). Project reviews may take up to 14 days for initial review of your application. During this time, the ARK.io team will reach out to you with any questions or comments on your application. 
+Applications should be completed using the [**ARK Grants Application Template**](ark-grants-application-template.md). Please fill out all information as requested, to include your personal contact information for coordination of your application. Applications can be submitted to [grants@ark.io](mailto:grants@ark.io). Project reviews may take up to 14 days for initial review of your application. During this time, the ARK.io team will reach out to you with any questions or comments on your application. 
 
 Once the project review is completed, we will notify you with an official decision about your project, including any feedback we may have. If your project is approved, we will provide instructions on how to proceed at that time. 
 
