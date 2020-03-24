@@ -20,6 +20,11 @@
 * [Installing Plugins/dApps](devops-guides/installing-plugins-dapps.md)
 * [Core Environment Variables](devops-guides/core-environment-variables.md)
 
+## Program Guides
+
+* [ARK Grants Program Guidelines](program-guides/ark-grants-program-guidelines.md)
+* [ARK Grants Application Template](program-guides/ark-grants-application-template.md)
+
 ## Release Guides <a id="core-releases"></a>
 
 * [Introduction](core-releases/releases.md)
@@ -37,9 +42,4 @@
 * [ARK Whitepaper](https://whitepaper.ark.io)
 * [Ask in our Public Slack](https://ark.io/slack)
 * [Official ARK.io Website](https://ark.io)
-
-## Program Documentation
-
-* [ARK Grants Program Guidelines](program-documentation/ark-grants-program-guidelines.md)
-* [ARK Grants Application Template](program-documentation/ark-grants-application-template.md)
 
