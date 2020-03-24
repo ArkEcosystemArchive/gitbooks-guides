@@ -23,7 +23,6 @@
 ## Program Guides
 
 * [ARK Grants Program Guidelines](program-guides/ark-grants-program-guidelines.md)
-* [ARK Grants Application Template](program-guides/ark-grants-application-template.md)
 
 ## Release Guides <a id="core-releases"></a>
 

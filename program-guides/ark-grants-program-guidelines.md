@@ -30,7 +30,7 @@ In addition to the above, all projects approved and funded by ARK.io are require
 * All projects will be open source.
 * The source code for the project will be owned by ARK.io and will be made available under a relevant open source license determined on a case by case basis. 
 * Projects will be managed in a repository hosted by ARK.io to ensure long term availability of project source code. 
-* Projects should be developed in TypeScript whenever possible and must follow ARK.io coding standards as outlined in the Technologies section of this document. 
+* Projects should be developed in TypeScript whenever possible and must follow ARK.io coding standards as outlined in the [Technologies](ark-grants-program-guidelines.md#technologies) section of this document. 
 
 If you are uncomfortable providing any of these items or agreeing to the guidelines as outlined in this document, we will be unable to approve your application and/or fund your project. 
 
@@ -73,9 +73,50 @@ Payment for projects can be made in BTC and/or ARK and payment preference will b
 
 ### Submission Process
 
-Applications should be completed using the [**ARK Grants Application Template**](ark-grants-application-template.md). Please fill out all information as requested, to include your personal contact information for coordination of your application. Applications can be submitted to [grants@ark.io](mailto:grants@ark.io). Project reviews may take up to 14 days for initial review of your application. During this time, the ARK.io team will reach out to you with any questions or comments on your application. 
+Applications should be completed using the [**ARK Grants Application Template** ](ark-grants-program-guidelines.md#ark-grants-application-template)below. Please fill out all information as requested, to include your personal contact information for coordination of your application. Applications can be submitted to [grants@ark.io](mailto:grants@ark.io). Project reviews may take up to 14 days for initial review of your application. During this time, the ARK.io team will reach out to you with any questions or comments on your application. 
 
 Once the project review is completed, we will notify you with an official decision about your project, including any feedback we may have. If your project is approved, we will provide instructions on how to proceed at that time. 
 
-Thank you for your interest in the ARK Grants program and we look forward to reading your proposals! 
+Thank you for your interest in the ARK Grants program and we look forward to reading your proposals!
+
+## ARK Grants Application Template
+
+#### Applicant Information
+
+Please include the following information in your application where applicable. This will be used to determine whether we believe the project is viable based on your background and experience. 
+
+* Name
+* Email Address
+* Slack and/or Discord Handle
+* Github Username / Profile Link
+* Brief Bio \(2-3 paragraphs\) & Portfolio Links if available
+
+#### Project Description
+
+Please include a project description, outlining the purpose of your application. This should include 1-2 paragraphs outlining the general goal of the project and how the app can benefit the ARK Ecosystem and other developers. 
+
+#### Project Architecture
+
+In this section of your application you will outline how you intend to build the application or proof-of-concept. This should include frameworks, languages, an outline of custom transaction types or ARK Logic that will be built, and should contain details on how the application will function. 
+
+#### Milestones
+
+In order to conduct a proper review of your application and determine the viability of the project, we will need a list of suggested milestones. These milestones will be mapped to a number of hours of development and will assist in determining the funding offer for the project. These milestones will directly map to associated milestone reviews and payment release if your project is approved. 
+
+_**Example:**_ 
+
+\(Title\) Milestone 1: \(Description\) Complete Initial UI Design \[40 Hours\]
+
+\(Outline\) This milestone will consist of a full UI design to include all intended features of the plugin and relevant screens. UI design will take roughly 40 hours and the following designs will be included:   
+
+
+* Page Design 1
+* Page Design 2
+* Page Design 3
+
+For your final two milestones, please include one milestone for ‘Documentation’ and one for ‘Final Review’. 
+
+#### Closing Remarks
+
+Please provide any closing remarks and/or considerations for your project. This is an opportunity to give any additional details that may be relevant to the approval of your project and to sell us on why we should approve your application. 
 
