@@ -23,6 +23,7 @@
 ## Program Guides
 
 * [ARK Grants Program Guidelines](program-guides/ark-grants-program-guidelines.md)
+* [Security Vulnerability Disclosure Program](program-guides/security-vulnerability-disclosure-program.md)
 
 ## Release Guides <a id="core-releases"></a>
 
