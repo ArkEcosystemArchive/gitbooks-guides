@@ -32,7 +32,7 @@ To start with the ARK Core install process, we recommend that you start with a c
 * Ubuntu 16.x / 18.x.
 * 1 CPU \(if you are going to run a Forger at least 2 dedicated CPUs\).
 * 2–4 GB RAM \(if you are going to run a Forger at least 8GB RAM\).
-* at least 20 GB drive \(we strongly recommend running it on SSD drive as there are a lot of read and write operations to the DB\).
+* minimum 40 GB, recommended 60 GB drive \(we strongly recommend running it on SSD drive as there are a lot of read and write operations to the DB\).
 
 ## 1. Short Guide for Setting Up Relay Node <a id="9002"></a>
 
