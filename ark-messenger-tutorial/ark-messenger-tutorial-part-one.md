@@ -1,0 +1,221 @@
+# ARK Messenger Tutorial — Part 1
+
+**Welcome everyone to our series of tutorials based on the ARK Messenger Proof-of-Concept \(PoC\). By the end of this series, you will be able to set up your own autonomous and private messaging application. This tutorial was created in-part with documentation provided by Delegate** [**Lemii**](https://github.com/Lemii) **as part of his** [**ARK Messenger**](https://arkmessenger.io/) **Proof-of-Concept which was funded by the ARK Grants Program.**
+
+In order to make the development process as simple as possible, we will be breaking down these tutorials into three major sections:
+
+### Part One <a id="e45d"></a>
+
+* Set up a development environment
+* Create and deploy a bridgechain locally with a custom network configuration
+
+### Part Two <a id="e9c3"></a>
+
+* Develop the custom transaction
+* Test a custom transaction with the local bridgechain
+* Develop the client
+
+### Part Three <a id="ba70"></a>
+
+* Deploy a bridgechain
+* Launch the client application
+
+## **How Does ARK Messenger Work?** <a id="bf55"></a>
+
+Before we dive in, it would be beneficial to understand how the ARK Messenger works!
+
+The ARK Messenger is comprised of two major components: \(1\) _**the client**_; and \(2\) _**the bridgechain**_.
+
+* The _client_ is the front-end application that you interact with as a user. It handles all user input and processes all incoming and outgoing data to the network.
+* The _bridgechain_ is the blockchain component of the application. It acts as a decentralized database
+
+If you would like to review the code for both components, they are listed below for your convenience:
+
+* [Client Codebase](https://github.com/ArkEcosystem/poc-ark-messenger)
+* [Bridgechain Codebase](https://github.com/ArkEcosystem/poc-ark-messenger-core)
+
+The ARK Messenger application works with channels. A channel can consist of any number of participants. When a user creates a new channel, a new channel ID and password is generated. The password can then be shared with other users so that they can join the channel and send messages.
+
+Messages sent to the channel are encrypted and decrypted using the channel’s password as the seed. All sensitive data is handled by the user’s local client and no unencrypted data is ever broadcasted. ARK Messenger runs on its own bridgechain with a customized network and node configuration. It also makes use of a custom transaction built with the _Generic Transaction Interface \(GTI\)_ to handle the processing of the chat messages.
+
+> _**Try out ARK Messenger at**_ [_**https://ARKmessenger.io**_](https://arkmessenger.io/)
+
+Now that we have a foundation of what the ARK Messenger is, we are ready to start building. Let us review how to set up a development environment.
+
+## **Setting up a development environment** <a id="9001"></a>
+
+The documentation on [Learn ARK](https://learn.ark.dev/core-getting-started/setting-up-your-development-environment) is an ideal way for developers to go through the processes for setting up a development environment. We recommend Linux \(_\*.deb based_\) operating system as the default environment. We officially recommend and support **Ubuntu** operating system.
+
+You can also set up your development environment using a Docker on [macOS/Linux Docker](https://learn.ark.dev/core-getting-started/setting-up-your-development-environment/docker) or a [Docker on Windows](https://learn.ark.dev/core-getting-started/setting-up-your-development-environment/windows).
+
+### Step 1: User setup <a id="311a"></a>
+
+Once you have your environment up and running using the links above, we can create a new user `ark` and add this user to the sudoers group \(allowing root execution if needed\).
+
+If you are running on a fresh cloud box/vps, like for example[ DigitalOcean](https://cloud.digitalocean.com/), then create a user with the following commands below:
+
+```text
+sudo adduser ark
+sudo usermod -aG sudo ark# login as ark user
+sudo su ark
+```
+
+### Step 2: Install Git Source Control System <a id="30ef"></a>
+
+As the most popular version control software in existence, Git is a staple of many developer workflows, and ARK is no exception. Downloading Git will allow you to clone the latest version of ARK Core. Download it by entering the following command:
+
+```text
+sudo apt-get install -y git curl apt-transport-https update-notifier
+```
+
+### Step 3: Install Node.js Runtime <a id="802c"></a>
+
+As ARK Core is written exclusively in [Node.js](https://nodejs.org/), the server-side framework for JavaScript and Typescript, installing Node.js is a necessity for core development. The code below installs Node.js from the source.
+
+```text
+sudo wget --quiet -O - https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add -
+(echo "deb https://deb.nodesource.com/node_11.x $(lsb_release -s -c) main" | sudo tee /etc/apt/sources.list.d/nodesource.list)sudo apt-get updatesudo apt-get install nodejs -y
+```
+
+### **Step 4: Install Yarn Package Manager**
+
+Yarn is a package manager that seeks to build upon the foundation of Node’s npm. Although yarn is not a strict requirement, in many cases it works faster and more elegantly than npm. Most ARK developers use yarn, and as such, you will see yarn commands often used throughout our documentation.
+
+```text
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+(echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list)sudo apt-get updatesudo apt-get install -y yarn
+```
+
+### Step 5: Install Dependencies <a id="ee05"></a>
+
+Dependencies are needed for `core` to be compiled, run and controlled while living inside your Linux based environment. The command below installs some of those needed dependencies that are used by core or related scripts.
+
+```text
+sudo apt-get install build-essential libcairo2-dev pkg-config libtool autoconf automake python libpq-dev jq -y
+```
+
+### Step 6: Clone The Core Repository <a id="e36a"></a>
+
+Let’s clone our `core` repository and run the initial `yarn setup` command. We will also check out the latest `develop` branch.
+
+`yarn setup` command leverages [Lerna](https://github.com/lerna/lerna) to clean, bootstrap and build the core packages \(including transpiling typescript\). For more information look into Core's `package.json` file in the root folder.
+
+```text
+git clone https://github.com/arkecosystem/core
+cd core
+git checkout develop#run Lerna to clean, bootstrap and build the core packages
+yarn setup
+```
+
+### Step 7: Setting Up The Development Database <a id="8d1b"></a>
+
+ARK Core stores all the blockchain data in a [PostgreSQL](https://www.postgresql.org/) database. You have two options on how to set up your development database.
+
+> Follow **Step 7.1** if you are working locally on your developer computer and have docker environment in place, otherwise follow **Step 7.2** \(for example if you are running on a cloud based Ubuntu instance or prefer native database install\).
+
+### Step 7.1 Database Setup Using Docker <a id="62ce"></a>
+
+If you are already using `Docker` and have `docker-compose` installed, then you can generate docker files from the command line, with the `yarn docker ark` command where `ark` is the name of the `network` for which you want to generate docker files. For now, let's stick with `ark` as the default name of the network.
+
+Executing the command `yarn docker ark` in the root folder of the previously cloned repository, like this:
+
+```text
+cd core  #root folder of the cloned repository
+yarn docker ark
+```
+
+will generate the following docker files inside our `core/docker` folder \(see folder tree below\):
+
+```text
+#core/docker tree in the cloned repository folder
+├── development
+│   ├── devnet
+│   │   ├── Dockerfile
+│   │   ├── docker-compose.yml
+│   │   ├── entrypoint.sh
+│   │   ├── purge_all.sh
+│   │   └── restore.sh
+│   ├── mainnet
+│   │   └── docker-compose.yml
+│   ├── testnet #this is the folder where we will start our PostgreSQL testned DB
+│   │   ├── Dockerfile
+│   │   ├── docker-compose.yml
+│   │   ├── entrypoint.sh
+│   │   ├── purge_all.sh
+│   │   └── restore.sh
+│   └── unitnet
+│       ├── docker-compose.yml
+│       └── purge.sh
+└── production
+...
+```
+
+To start the PostgreSQL docker container we must go into the corresponding folder and run the `docker-compose` command. For testnet we need to run the following:
+
+```text
+cd core/docker/development/testnet
+docker-compose up postgres #postgres is the name of the PostgreSQL container
+```
+
+The `docker-compose up postgres` will start PostgresSQL container and expose it to our core via standard PostgreSQL port 5432.
+
+### Step 7.2 Installing Postgres Database System-Wide <a id="909b"></a>
+
+If you don’t want to install and run Docker on your local computer you can still install the PostgreSQL database natively on your running operating system. For \*.deb based Linux systems the commands are the following:
+
+```text
+sudo apt-get install postgresql postgresql-contrib -ysudo -i -u postgres psql -c "CREATE USER ark  WITH PASSWORD 'password' CREATEDB;"sudo -i -u postgres psql -c "CREATE DATABASE ark_testnet WITH OWNER ark;"sudo -i -u postgres psql -c "CREATE DATABASE ark_devnet WITH OWNER ark;"
+```
+
+The commands above install the PostgreSQL database locally and create databases for running testnet and devnet networks with user `ark` as the database owner. If you have skipped the Step 1: User setup, you have to change `ark` user to your development username, usually, the logged-in username.
+
+### Run Above Commands Together In One Setup Script <a id="1f55"></a>
+
+While the above steps are helpful for getting acquainted with ARK Core, some developers may opt to run the above commands together in one setup script. First, create user ARK with a default password `password`. This will make it easier for us to work with default settings.
+
+```text
+#!/usr/bin/env bash
+sudo adduser ark
+sudo usermod -aG sudo ark# login as ark user
+sudo su - ark
+```
+
+After creating and logging under `ark` user, you can execute the following script to install development tools and dependencies from [Technology Stack](https://blog.ark.io/technology-stack). If your default user isn't `ark`, you should copy and modify the script source below \(database section\).
+
+```text
+bash <(curl -s https://raw.githubusercontent.com/learn-ark/bash-helper-scripts/master/dev-setup.sh)
+```
+
+Followed by this:
+
+```text
+#!/usr/bin/env bash
+sudo apt-get install -y git curl apt-transport-https update-notifiersudo wget --quiet -O - https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add -
+(echo "deb https://deb.nodesource.com/node_11.x $(lsb_release -s -c) main" | sudo tee /etc/apt/sources.list.d/nodesource.list)sudo apt-get updatesudo apt-get install nodejs -ycurl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+(echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list)sudo apt-get updatesudo apt-get install -y yarnsudo apt-get install build-essential libcairo2-dev pkg-config libtool autoconf automake python libpq-dev jq -ysudo apt-get install postgresql postgresql-contrib -ysudo -i -u postgres psql -c "CREATE USER ark  WITH PASSWORD 'password' CREATEDB;"sudo -i -u postgres psql -c "CREATE DATABASE ark_testnet WITH OWNER ark;"sudo -i -u postgres psql -c "CREATE DATABASE ark_devnet WITH OWNER ark;"
+```
+
+## Create and deploy a bridgechain locally with a custom network configuration <a id="37a1"></a>
+
+For the last part of this tutorial, we will be creating and deploying a bridgechain with a custom network configuration.
+
+To accomplish this, we will be using the documentation found at the ARK [Deployer Hub](https://deployer.ark.dev/). Once you have followed the steps outlined there, you will have successfully created and deployed your bridgechain.
+
+By using a bridgechain, a lot of options to customize the network will open up. Here’s a summary of some of the parameters that ARK Messenger uses:
+
+> Ticker: Պ  
+> Token: MSN  
+> Block time: 4 seconds  
+> Forgers: 11  
+> p2p port: 11002  
+> API port: 11003  
+> Webhook port: 11004
+
+But most importantly, a bridgechain allows you to run a network with your own custom transactions.
+
+## Next Steps <a id="f9a0"></a>
+
+Our next tutorial will cover the development of a custom transaction, testing that transaction on our bridgechain, and developing the client which will serve as the front-end application.
+
+If you become stuck at any point make sure to consult our documents on the [Learn ARK](https://learn.ark.dev/core-getting-started/setting-up-your-development-environment) hub. In addition, our team and developers are active on [Slack](https://ark.io/slack) so do not hesitate to reach out to us!
+
