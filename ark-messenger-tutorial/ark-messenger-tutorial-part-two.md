@@ -1,4 +1,4 @@
-# ARK Messenger Tutorial — Part 2
+# ARK Messenger Tutorial — Part Two
 
 **Welcome everyone to the second part in our series of tutorials based on the ARK Messenger Proof-of-Concept \(PoC\). During** [**Part One**](https://blog.ark.io/ark-messenger-tutorial-part-one-30068eb8619e)**, we set up a development environment and deployed our own custom bridgechain. This series was created in-part with documentation provided by Delegate** [**Lemii**](https://github.com/Lemii) **as part of his** [**ARK Messenger**](https://arkmessenger.io/) **Proof-of-Concept, funded by the ARK Grants Program.**
 

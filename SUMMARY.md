@@ -22,18 +22,18 @@
 
 ## ARK Messenger Tutorial
 
-* [ARK Messenger Tutorial — Part 1](ark-messenger-tutorial/ark-messenger-tutorial-part-one.md)
-* [ARK Messenger Tutorial — Part 2](ark-messenger-tutorial/ark-messenger-tutorial-part-two.md)
-* [ARK Messenger Tutorial — Part 3](ark-messenger-tutorial/ark-messenger-tutorial-part-three.md)
+* [ARK Messenger Tutorial — Part One](ark-messenger-tutorial/ark-messenger-tutorial-part-one.md)
+* [ARK Messenger Tutorial — Part Two](ark-messenger-tutorial/ark-messenger-tutorial-part-two.md)
+* [ARK Messenger Tutorial — Part Three](ark-messenger-tutorial/ark-messenger-tutorial-part-three.md)
 
 ## Launching HTML5 Games In The ARK Desktop Wallet
 
-* [Launching HTML5 Games In The ARK Desktop Wallet - Part 1](launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-one.md)
-* [Launching HTML5 Games In The ARK Desktop Wallet — Part 2](launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-two.md)
-* [Launching HTML5 Games In The ARK Desktop Wallet — Part 3](launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-three.md)
-* [Launching HTML5 Games In The ARK Desktop Wallet — Part 4](launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-four.md)
-* [Launching HTML5 Games In The ARK Desktop Wallet — Part 5](launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-five.md)
-* [Launching HTML5 Games In The ARK Desktop Wallet — Part 6](launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-six.md)
+* [Launching HTML5 Games In The ARK Desktop Wallet - Part One](launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-one.md)
+* [Launching HTML5 Games In The ARK Desktop Wallet — Part Two](launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-two.md)
+* [Launching HTML5 Games In The ARK Desktop Wallet — Part Three](launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-three.md)
+* [Launching HTML5 Games In The ARK Desktop Wallet — Part Four](launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-four.md)
+* [Launching HTML5 Games In The ARK Desktop Wallet — Part Five](launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-five.md)
+* [Launching HTML5 Games In The ARK Desktop Wallet — Part Six](launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-six.md)
 
 ## Program Guides
 

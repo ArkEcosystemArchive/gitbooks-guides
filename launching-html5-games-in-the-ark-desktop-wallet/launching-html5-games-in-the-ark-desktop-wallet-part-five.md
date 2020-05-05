@@ -1,4 +1,4 @@
-# Launching HTML5 Games In The ARK Desktop Wallet — Part 5
+# Launching HTML5 Games In The ARK Desktop Wallet — Part Five
 
 
 

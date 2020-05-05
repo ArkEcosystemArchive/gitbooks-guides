@@ -1,4 +1,4 @@
-# Launching HTML5 Games In The ARK Desktop Wallet — Part 3
+# Launching HTML5 Games In The ARK Desktop Wallet — Part Three
 
 _**Welcome to the third tutorial in our series of launching an HTML5 game in the ARK Desktop Wallet! This series is aimed at developers of all skill levels. The goal of this series is to be able to convert an HTML5 game to work as a fully functioning plugin within the ARK Desktop Wallet.**_
 
