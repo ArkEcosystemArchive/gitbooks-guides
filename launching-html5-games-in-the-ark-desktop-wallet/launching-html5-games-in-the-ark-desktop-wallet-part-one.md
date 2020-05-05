@@ -4,12 +4,12 @@ _**Welcome to the first tutorial in our series of launching an HTML5 game in the
 
 At a glance, this tutorial series will be broken down into the following parts:
 
-* **Part One:** [**How to import an ARK wallet address into your application**](https://blog.ark.io/b26fd444f0d7)
-* Part Two: Creating the Backend for your Plugin
-* Part Three: Making your game work with a betting system
-* Part Four: Implementing Game Logic into your Plugin
-* Part Five: Determining how Prizes Work
-* Part Six: Launching your game as a wallet plugin
+* **Part One:** [**How to import an ARK wallet address into your application**](https://guides.ark.dev/launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-one)\*\*\*\*
+* **Part Two:** [**Creating the Backend for your Plugin**](https://guides.ark.dev/launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-two)\*\*\*\*
+* **Part Three:** [**Making your game work with a betting system**](https://guides.ark.dev/launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-three)\*\*\*\*
+* **Part Four:** [**Implementing Game Logic into your Plugin**](https://guides.ark.dev/launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-four)\*\*\*\*
+* **Part Five:** [**Determining how Prizes Work**](https://guides.ark.dev/launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-five)\*\*\*\*
+* **Part Six:** [**Launching your game as a wallet plugin**](https://guides.ark.dev/launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-six)\*\*\*\*
 
 One thing to keep in mind before we start, these tutorials are aimed at launching an HTML5 game within the ARK Desktop Wallet. These tutorials are not aimed at teaching developers how to build games. However, once your game is built, we would love to support it within the ARK Desktop Wallet. So let’s dive in and get started with importing a wallet address into your game!
 

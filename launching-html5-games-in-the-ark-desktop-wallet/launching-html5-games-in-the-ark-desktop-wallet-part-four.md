@@ -271,7 +271,9 @@ If you become stuck at any point make sure to consult our documents on the [**Le
 
 **Check out previous posts in this series for reference here:**
 
-* **Part One:** [**How to import an ARK wallet address into your application**](https://blog.ark.io/b26fd444f0d7)
-* **Part Two:** [**Creating the Backend for your Plugin**](https://blog.ark.io/launching-html5-games-in-the-ark-desktop-wallet-part-two-d07b6620bd46)
-* **Part Three:** [**Making your game work with a betting system**](https://blog.ark.io/launching-html5-games-in-the-ark-desktop-wallet-part-three-74fc5398b96f)
+* **Part One:** [**How to import an ARK wallet address into your application**](https://guides.ark.dev/launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-one)\*\*\*\*
+* **Part Two:** [**Creating the Backend for your Plugin**](https://guides.ark.dev/launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-two)\*\*\*\*
+* **Part Three:** [**Making your game work with a betting system**](https://guides.ark.dev/launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-three)\*\*\*\*
+
+
 
