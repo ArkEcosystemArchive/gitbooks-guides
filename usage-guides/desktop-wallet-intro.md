@@ -118,6 +118,8 @@ On the wallet detail page, which is accessed by clicking on the wallet's name or
 * Purchase ARK through [Changelly](https://changelly.com/).
 * Register a second passphrase for added security.
 * Register the wallet as a delegate.
+* Register a business
+* Register a bridgechain
 
 ![](../.gitbook/assets/mainwallet.png)
 
@@ -233,6 +235,19 @@ Registering as a delegate is a simple transaction. It provides network nodes wit
 
 ![](../.gitbook/assets/submitdelegateregistration.png)
 
+###  **Resign as a Delegate**
+
+Delegate Resignation is a new transaction type being offered in ARK Core v2.6 that gives delegates the ability to resign and exclude themselves from the delegate rankings. 
+
+1. **Open the ARK Desktop Wallet and select the vertical ellipsis icon next to the right of the send button.**
+2. **Select the dropdown menu under Registration and select “Resign Delegate”**
+3. **Enter your wallet’s passphrase \(or password if you are using encrypted option\) and confirm the transaction.**
+4. **Refresh your wallet and you will see that after the next round of forging, your delegate will be marked resigned and no longer counted in the Active Delegate Rankings \(Top 51\).**
+
+{% embed url="https://youtu.be/3rbqSq2YgpQ" %}
+
+\*\*\*\*
+
 ### Register a Second Passphrase <a id="register-a-second-passphrase"></a>
 
 Security is critical. By issuing a second signature transaction, you tell network nodes to verify that every transaction coming from your wallet is also signed by another Passphrase.
@@ -256,6 +271,98 @@ Security is critical. By issuing a second signature transaction, you tell networ
 * **Verify the second signature transaction details and Submit, Cancel or Save it by clicking either** _**Send**_**,** _**Back**_ **or** _**Save**_
 
 ![](../.gitbook/assets/submitsecondsignature.png)
+
+### Register a Business <a id="register-a-second-passphrase"></a>
+
+By registering your business on-chain, all the data regarding your business is stored in a decentralized manner. In addition, businesses can take control of their information and use it as a way to validate the products or services they have created.
+
+1. **Open the ARK Desktop Wallet and select the vertical ellipsis icon next to the right of the send button.**
+2. **Select the drop-down menu under Registration and select “Register Business”**
+3. **Fill out the form with your business information**
+4. **Select your transaction fee and enter your passphrase.**
+5. **Select “Next” and after reviewing your information, select “Send”**
+
+![](https://miro.medium.com/max/1104/1*V9hLb19OEqfD4O63e5nw0g.gif)
+
+###  **Business Update Transaction**
+
+We understand that businesses are not static. Over time a business may evolve, and information will need to be updated. In addition, it is likely that more information will be stored on-chain in the future. Therefore, in terms of being practical, we wanted to make sure that there was an easy way for users to make changes to their information in a quick and efficient manner.
+
+1. **Open the ARK Desktop Wallet and go to the Business Tab and click on the vertical ellipsis.**
+2. **Select the drop-down menu under Registration and select “Update Business”**
+3. **Use the form to update your business information. \(Things such as your VAT, repository address, and website can be updated thru this transaction\)**
+4. **Select your transaction fee and enter your passphrase.**
+5. **Select “Next” and after reviewing your information, select “Send”**
+
+![](https://miro.medium.com/max/1104/1*q24M5s795Fzqh2OPHLDkHg.gif)
+
+### Business Resignation Transaction
+
+ In a way similar to our **delegate resignation transaction**, the business resignation transaction allows a user to delist their business and mark it as inactive. 
+
+1. **Open the ARK Desktop Wallet and go to the Business Tab and click on the vertical ellipsis.**
+2. **Select the drop-down menu under Registration and select “Business Resignation”**
+3. **Verify your business name and information before proceeding.**
+4. **Select your transaction fee and enter your passphrase.**
+5. **Select “Next” and after reviewing your information, select “Send”**
+
+![](https://miro.medium.com/max/1104/1*D0vR-A12suSB-_hsvjpOeg.gif)
+
+### Bridgechain Registration Transaction
+
+Once you have registered your business on-chain you will also have an option to register your bridgechains. By doing this, we’ll be able to automatically discover your bridgechain’s configuration for our upcoming projects such as Deployer, Marketplace and also have an option to be auto-discoverable within our Wallets.
+
+* **Select the 'Business' tab and then select 'Register Bridgechain'**
+
+![](https://miro.medium.com/max/1104/1*8Jzqa26OfBysINeYx358PA.png)
+
+* **On the initial screen, you can add seed servers from your bridgechain, they can be used to obtain blockchain data from your bridgechain.**
+
+![](https://miro.medium.com/max/552/1*gBPqnbxVWCQ0_kMqESpgrg.png)
+
+ ****
+
+*  **On the second screen, you can input the name of your bridgechain, genesis hash \(this one is unique to each bridgechain\), bridgechain repository, asset repository and default API port.**
+
+![](https://miro.medium.com/max/1098/1*OLOvx3GqJG1cFTFUTarFtw.png)
+
+### **Bridgechain Update Transaction**
+
+If you want to update your bridgechain information you can do so by initiating a Bridgechain Update transaction. This can be used to update information such as seed nodes, name of the bridgechain or repositories.
+
+* **To update your business, select the Business tab and then select the bridgechain that you want to update from the list.**
+
+![](https://miro.medium.com/max/1104/1*YbyWv88F3ppO2Y6iqyXOKw.png)
+
+* **This will open a transaction modal where you can click on the update button, which will open update modal.**
+
+![](https://miro.medium.com/max/552/1*bRdqU62xc5f3QILmau5oVg.png)
+
+### **Bridgechain Resignation Transaction**
+
+If you want to resign your bridgechain from the blockchain you have an option for that as well. Resigning all of your bridgechains is a requirement for resigning your business.
+
+* **To resign your bridgechain, select the Business tab and then select the bridgechain that you want to resign from the list below.**
+
+![](https://miro.medium.com/max/1104/1*YbyWv88F3ppO2Y6iqyXOKw.png)
+
+* **This will open a transaction modal where you can click on the resign button, which will open the resign modal.** 
+
+![](https://miro.medium.com/max/552/1*bRdqU62xc5f3QILmau5oVg.png)
+
+
+
+### **IPFS Hash Storage**
+
+ You can now also save [IPFS](https://ipfs.io/) compliant hashes on the ARK’s Public Network. By doing so, you can have an independent method of registering your IPFS data on the ARK Public Network.
+
+* **To register an IPFS hash, click on the IPFS tab and then select Store Hash**
+
+![](https://miro.medium.com/max/1104/1*EFyzKGRmi5ToKwJkzdO69Q.png)
+
+* **This will open a transaction modal where you can store IPFS hash.**
+
+![](https://miro.medium.com/max/552/1*3hCntKz44GxqNbHpzNij0g.png)
 
 ## Contact Interface
 
