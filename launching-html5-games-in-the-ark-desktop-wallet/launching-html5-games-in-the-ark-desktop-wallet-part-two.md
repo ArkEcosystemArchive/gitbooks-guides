@@ -1,7 +1,5 @@
 # Launching HTML5 Games In The ARK Desktop Wallet — Part Two
 
-
-
 _**Welcome to the second tutorial in our series of launching an HTML5 game in the ARK Desktop Wallet! This series is aimed at developers of all skill levels. The goal of this series is to be able to convert an HTML5 game to work as a fully functioning plugin within the ARK Desktop Wallet. The first set of tutorials will explain how to interact with the ARK blockchain in a standalone HTML5 environment before finally jumping over into the ARK Desktop Wallet.**_
 
 We left off [**last time** ](https://guides.ark.dev/launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-one)with a self-contained [Construct 3](https://editor.construct.net/) app that lets us make sure a supplied address is valid on the ARK Public Network. Now it’s time to evolve this to work with any ARK-powered network of our choice and start building the back-end of our game.
@@ -191,5 +189,5 @@ If you become stuck at any point make sure to consult our documents on the [**Le
 
 ## Missed the previous part? <a id="ca62"></a>
 
-* **Part One:** [**How to import an ARK wallet address into your application**](https://blog.ark.io/b26fd444f0d7)
+* **Part One:** [**How to import an ARK wallet address into your application**](launching-html5-games-in-the-ark-desktop-wallet-part-one.md)\*\*\*\*
 
