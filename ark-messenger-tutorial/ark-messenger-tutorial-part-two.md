@@ -125,12 +125,13 @@ public messageData(message: string): MessageTransactionBuilder {
 Finally, we need to add the non-standard fields to the transaction data object for when it is called with `getStruct()`:
 
 ```typescript
-const struct: Interfaces.ITransactionData = super.getStruct();
-struct.amount = this.data.amount;
-struct.asset = this.data.asset;
-struct.recipientId = this.data.recipientId;
-
-return struct;
+public getStruct(): Interfaces.ITransactionData {
+    const struct: Interfaces.ITransactionData = super.getStruct();
+    struct.amount = this.data.amount;
+    struct.asset = this.data.asset;
+    struct.recipientId = this.data.recipientId;
+    
+    return struct;
 };
 ```
 
@@ -190,11 +191,8 @@ To integrate the _**Message Transaction**_ plugin in the bridgechain, we simply 
 
 ```typescript
 module.exports = {
-    
-    …
-    
-    ."message-transaction": {},
-
+    …,
+    "message-transaction": {},
 };
 ```
 
@@ -242,17 +240,18 @@ const createMessageTransaction = async (
     encryptedMessage: string,
     passphrase: string,
     senderId: string
-    ): Promise<ITransactionData> => {
-        const nonce = await fetchRemoteNonce(senderId);
-        const tx = new MessageTransactionBuilder()
-            .network(NETWORK)
-            .recipientId(recipientId)
-            .messageData(encryptedMessage)
-            .nonce(nonce)
-            .sign(passphrase);
-        
-        return tx.getStruct();
-        };
+): Promise<ITransactionData> => {
+    
+    const nonce = await fetchRemoteNonce(senderId);
+    const tx = new MessageTransactionBuilder()
+        .network(NETWORK)
+        .recipientId(recipientId)
+        .messageData(encryptedMessage)
+        .nonce(nonce)
+        .sign(passphrase);
+    
+    return tx.getStruct();
+};
 
 export const sendMessage = async (
     recipientId: string,
@@ -260,20 +259,20 @@ export const sendMessage = async (
     channelPassphrase: string,
     userPassphrase: string,
     userAddress: string
-    ): Promise<IPostTransactionResponse | void> => {
-
-        const encryptedMessage = encryptMessage(text, channelPassphrase);
-        try {
-            const tx = await createMessageTransaction(
-                recipientId,
-                encryptedMessage,
-                userPassphrase,
-                userAddress
-            );
+): Promise<IPostTransactionResponse | void> => {
+    const encryptedMessage = encryptMessage(text, channelPassphrase);
     
-    return broadcastTransaction(tx);
-} catch (err) {
-    console.error(err);
+    try {
+        const tx = await createMessageTransaction(
+            recipientId,
+            encryptedMessage,
+            userPassphrase,
+            userAddress
+        );
+        
+        return broadcastTransaction(tx);
+    } catch (err) {
+        console.error(err);
     }
 };
 ```
