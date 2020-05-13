@@ -54,9 +54,9 @@ Once you have your environment up and running using the links above, we can crea
 
 If you are running on a fresh cloud box/vps, like for example[ DigitalOcean](https://cloud.digitalocean.com/), then create a user with the following commands below:
 
-```text
+```bash
 sudo adduser ark
-sudo usermod -aG sudo ark# login as ark user
+sudo usermod -aG sudo ark #login as ark user
 sudo su ark
 ```
 
@@ -72,25 +72,29 @@ sudo apt-get install -y git curl apt-transport-https update-notifier
 
 As ARK Core is written exclusively in [Node.js](https://nodejs.org/), the server-side framework for JavaScript and Typescript, installing Node.js is a necessity for core development. The code below installs Node.js from the source.
 
-```text
+```bash
 sudo wget --quiet -O - https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add -
-(echo "deb https://deb.nodesource.com/node_11.x $(lsb_release -s -c) main" | sudo tee /etc/apt/sources.list.d/nodesource.list)sudo apt-get updatesudo apt-get install nodejs -y
+(echo "deb https://deb.nodesource.com/node_12.x $(lsb_release -s -c) main" | sudo tee /etc/apt/sources.list.d/nodesource.list)
+sudo apt-get update
+sudo apt-get install nodejs -y
 ```
 
 ### **Step 4: Install Yarn Package Manager**
 
 Yarn is a package manager that seeks to build upon the foundation of Node’s npm. Although yarn is not a strict requirement, in many cases it works faster and more elegantly than npm. Most ARK developers use yarn, and as such, you will see yarn commands often used throughout our documentation.
 
-```text
+```bash
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-(echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list)sudo apt-get updatesudo apt-get install -y yarn
+(echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list)
+sudo apt-get update
+sudo apt-get install -y yarn
 ```
 
 ### Step 5: Install Dependencies <a id="ee05"></a>
 
 Dependencies are needed for `core` to be compiled, run and controlled while living inside your Linux based environment. The command below installs some of those needed dependencies that are used by core or related scripts.
 
-```text
+```bash
 sudo apt-get install build-essential libcairo2-dev pkg-config libtool autoconf automake python libpq-dev jq -y
 ```
 
@@ -100,10 +104,10 @@ Let’s clone our `core` repository and run the initial `yarn setup` command. We
 
 `yarn setup` command leverages [Lerna](https://github.com/lerna/lerna) to clean, bootstrap and build the core packages \(including transpiling typescript\). For more information look into Core's `package.json` file in the root folder.
 
-```text
+```bash
 git clone https://github.com/arkecosystem/core
 cd core
-git checkout develop#run Lerna to clean, bootstrap and build the core packages
+git checkout develop #run Lerna to clean, bootstrap and build the core packages
 yarn setup
 ```
 
@@ -119,7 +123,7 @@ If you are already using `Docker` and have `docker-compose` installed, then you 
 
 Executing the command `yarn docker ark` in the root folder of the previously cloned repository, like this:
 
-```text
+```bash
 cd core  #root folder of the cloned repository
 yarn docker ark
 ```
@@ -152,7 +156,7 @@ will generate the following docker files inside our `core/docker` folder \(see f
 
 To start the PostgreSQL docker container we must go into the corresponding folder and run the `docker-compose` command. For testnet we need to run the following:
 
-```text
+```bash
 cd core/docker/development/testnet
 docker-compose up postgres #postgres is the name of the PostgreSQL container
 ```
@@ -163,7 +167,7 @@ The `docker-compose up postgres` will start PostgresSQL container and expose it 
 
 If you don’t want to install and run Docker on your local computer you can still install the PostgreSQL database natively on your running operating system. For \*.deb based Linux systems the commands are the following:
 
-```text
+```bash
 sudo apt-get install postgresql postgresql-contrib -ysudo -i -u postgres psql -c "CREATE USER ark  WITH PASSWORD 'password' CREATEDB;"sudo -i -u postgres psql -c "CREATE DATABASE ark_testnet WITH OWNER ark;"sudo -i -u postgres psql -c "CREATE DATABASE ark_devnet WITH OWNER ark;"
 ```
 
@@ -173,10 +177,10 @@ The commands above install the PostgreSQL database locally and create databases 
 
 While the above steps are helpful for getting acquainted with ARK Core, some developers may opt to run the above commands together in one setup script. First, create user ARK with a default password `password`. This will make it easier for us to work with default settings.
 
-```text
+```bash
 #!/usr/bin/env bash
 sudo adduser ark
-sudo usermod -aG sudo ark# login as ark user
+sudo usermod -aG sudo ark #login as ark user
 sudo su - ark
 ```
 
@@ -188,7 +192,7 @@ bash <(curl -s https://raw.githubusercontent.com/learn-ark/bash-helper-scripts/m
 
 Followed by this:
 
-```text
+```bash
 #!/usr/bin/env bash
 sudo apt-get install -y git curl apt-transport-https update-notifiersudo wget --quiet -O - https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add -
 (echo "deb https://deb.nodesource.com/node_11.x $(lsb_release -s -c) main" | sudo tee /etc/apt/sources.list.d/nodesource.list)sudo apt-get updatesudo apt-get install nodejs -ycurl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
