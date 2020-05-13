@@ -107,8 +107,8 @@ Let’s clone our `core` repository and run the initial `yarn setup` command. We
 ```bash
 git clone https://github.com/arkecosystem/core
 cd core
-git checkout develop #run Lerna to clean, bootstrap and build the core packages
-yarn setup
+git checkout develop
+yarn setup #run Lerna to clean, bootstrap and build the core packages
 ```
 
 ### Step 7: Setting Up The Development Database <a id="8d1b"></a>
@@ -168,7 +168,10 @@ The `docker-compose up postgres` will start PostgresSQL container and expose it 
 If you don’t want to install and run Docker on your local computer you can still install the PostgreSQL database natively on your running operating system. For \*.deb based Linux systems the commands are the following:
 
 ```bash
-sudo apt-get install postgresql postgresql-contrib -ysudo -i -u postgres psql -c "CREATE USER ark  WITH PASSWORD 'password' CREATEDB;"sudo -i -u postgres psql -c "CREATE DATABASE ark_testnet WITH OWNER ark;"sudo -i -u postgres psql -c "CREATE DATABASE ark_devnet WITH OWNER ark;"
+sudo apt-get install postgresql postgresql-contrib -y
+sudo -i -u postgres psql -c "CREATE USER ark  WITH PASSWORD 'password' CREATEDB;"
+sudo -i -u postgres psql -c "CREATE DATABASE ark_testnet WITH OWNER ark;"
+sudo -i -u postgres psql -c "CREATE DATABASE ark_devnet WITH OWNER ark;"
 ```
 
 The commands above install the PostgreSQL database locally and create databases for running testnet and devnet networks with user `ark` as the database owner. If you have skipped the Step 1: User setup, you have to change `ark` user to your development username, usually, the logged-in username.
@@ -194,9 +197,22 @@ Followed by this:
 
 ```bash
 #!/usr/bin/env bash
-sudo apt-get install -y git curl apt-transport-https update-notifiersudo wget --quiet -O - https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add -
-(echo "deb https://deb.nodesource.com/node_11.x $(lsb_release -s -c) main" | sudo tee /etc/apt/sources.list.d/nodesource.list)sudo apt-get updatesudo apt-get install nodejs -ycurl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-(echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list)sudo apt-get updatesudo apt-get install -y yarnsudo apt-get install build-essential libcairo2-dev pkg-config libtool autoconf automake python libpq-dev jq -ysudo apt-get install postgresql postgresql-contrib -ysudo -i -u postgres psql -c "CREATE USER ark  WITH PASSWORD 'password' CREATEDB;"sudo -i -u postgres psql -c "CREATE DATABASE ark_testnet WITH OWNER ark;"sudo -i -u postgres psql -c "CREATE DATABASE ark_devnet WITH OWNER ark;"
+sudo apt-get install -y git curl apt-transport-https update-notifier
+sudo wget --quiet -O - https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add -
+(echo "deb https://deb.nodesource.com/node_11.x $(lsb_release -s -c) main" | sudo tee /etc/apt/sources.list.d/nodesource.list)
+sudo apt-get update
+sudo apt-get install nodejs -y
+
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+(echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list)
+sudo apt-get update
+sudo apt-get install -y yarn
+sudo apt-get install build-essential libcairo2-dev pkg-config libtool autoconf automake python libpq-dev jq -y
+
+sudo apt-get install postgresql postgresql-contrib -y
+sudo -i -u postgres psql -c "CREATE USER ark  WITH PASSWORD 'password' CREATEDB;"
+sudo -i -u postgres psql -c "CREATE DATABASE ark_testnet WITH OWNER ark;"
+sudo -i -u postgres psql -c "CREATE DATABASE ark_devnet WITH OWNER ark;"
 ```
 
 ## Create and deploy a bridgechain locally with a custom network configuration <a id="37a1"></a>
