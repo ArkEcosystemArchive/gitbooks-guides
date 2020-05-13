@@ -56,7 +56,9 @@ If you are running on a fresh cloud box/vps, like for example[ DigitalOcean](htt
 
 ```bash
 sudo adduser ark
-sudo usermod -aG sudo ark #login as ark user
+sudo usermod -aG sudo ark 
+
+#login as ark user
 sudo su ark
 ```
 
@@ -108,7 +110,9 @@ Let’s clone our `core` repository and run the initial `yarn setup` command. We
 git clone https://github.com/arkecosystem/core
 cd core
 git checkout develop
-yarn setup #run Lerna to clean, bootstrap and build the core packages
+
+#run Lerna to clean, bootstrap and build the core packages
+yarn setup 
 ```
 
 ### Step 7: Setting Up The Development Database <a id="8d1b"></a>
@@ -183,7 +187,9 @@ While the above steps are helpful for getting acquainted with ARK Core, some dev
 ```bash
 #!/usr/bin/env bash
 sudo adduser ark
-sudo usermod -aG sudo ark #login as ark user
+sudo usermod -aG sudo ark 
+
+#login as ark user
 sudo su - ark
 ```
 
