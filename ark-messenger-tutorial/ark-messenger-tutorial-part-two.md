@@ -44,8 +44,7 @@ Just below that, we define our transaction schema:
 
 ```typescript
 public static getSchema(): Transactions.schemas.TransactionSchema {
-return schemas.extend(schemas.transactionBaseSchema, {…}
-
+    return schemas.extend(schemas.transactionBaseSchema, {…}
 }
 ```
 
@@ -118,7 +117,7 @@ Next up, we create a method that we can use to add message data to the transacti
 ```typescript
 public messageData(message: string): MessageTransactionBuilder {
     this.data.asset.messageData = {
-    message,
+        message,
     };
 };
 ```
@@ -142,16 +141,16 @@ There are a number of ways to test your custom transaction. One of the best opti
 At the top, we import all the required packages:
 
 ```typescript
-import “jest-extended”;
-import { Managers, Transactions } from “@arkecosystem/crypto”;
-import { MessageTransactionBuilder } from “../src/builders”;
-import { MessageTransaction } from “../src/transactions”;
+import "jest-extended";
+import { Managers, Transactions } from "@arkecosystem/crypto";
+import { MessageTransactionBuilder } from "../src/builders";
+import { MessageTransaction } from "../src/transactions";
 ```
 
 Next, we need to make some adjustments with the config manager to be able to actually create the transaction. First, we select the _**testnet**_ network preset and set the _**height**_ ****to 2. This will enable the AIP11 milestone.
 
 ```typescript
-Managers.configManager.setFromPreset(“testnet”);
+Managers.configManager.setFromPreset("testnet");
 Managers.configManager.setHeight(2);
 ```
 
@@ -164,13 +163,13 @@ Transactions.TransactionRegistry.registerTransactionType(MessageTransaction);
 The configuration is now complete. What’s left is to create a test that verifies that the transaction can be built and verified:
 
 ```typescript
-describe(“Test builder”, () => {
-      it(“should verify correctly”, () => {
+describe("Test builder", () => {
+      it("should verify correctly", () => {
          const builder = new MessageTransactionBuilder();
          const tx = builder
-            .messageData(“SomeMessage”)
-            .nonce(“3”)
-            .recipientId(“AYeceuGa7tTsyG6jgq7X6qKdoXt9iJJKN6”).sign(“clay harbor enemy utility margin pretty hub comic piece  aerobic umbrella acquire”);
+            .messageData("SomeMessage")
+            .nonce("3")
+            .recipientId("AYeceuGa7tTsyG6jgq7X6qKdoXt9iJJKN6").sign("clay harbor enemy utility margin pretty hub comic piece  aerobic umbrella acquire");
             expect(tx.build().verified).toBeTrue();
             expect(tx.verify()).toBeTrue();
       });
@@ -194,7 +193,7 @@ module.exports = {
     
     …
     
-    .“message-transaction”: {},
+    ."message-transaction": {},
 
 };
 ```
@@ -216,11 +215,11 @@ To make use of the custom transaction in our chat client, we first have to inclu
 Now, we can simply import the Message Transaction Builder anywhere in our app to make use of it. In the ARK Messenger client, it is being imported in a separate utils file, as you can see [here](https://github.com/ArkEcosystem/poc-ark-messenger/blob/master/src/utils/transactions.ts).
 
 ```typescript
-import { encryptMessage, fetchRemoteNonce, broadcastTransaction } from ‘./index’;
-import { Transactions } from ‘@arkecosystem/crypto’;
-import { ITransactionData, IPostTransactionResponse } from ‘../interfaces’;
-import { MessageTransaction } from ‘../custom-transactions/message-transaction/transactions’;
-import { MessageTransactionBuilder } from ‘../custom-transactions/message-transaction/builders’;
+import { encryptMessage, fetchRemoteNonce, broadcastTransaction } from "./index";
+import { Transactions } from "@arkecosystem/crypto";
+import { ITransactionData, IPostTransactionResponse } from "../interfaces";
+import { MessageTransaction } from "../custom-transactions/message-transaction/transactions";
+import { MessageTransactionBuilder } from "../custom-transactions/message-transaction/builders";
 ```
 
 It’s required to register the new transaction type in the Transaction Registry:
