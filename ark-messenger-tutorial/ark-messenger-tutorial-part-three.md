@@ -1,7 +1,5 @@
 # ARK Messenger Tutorial — Part Three
 
-
-
 **Welcome everyone to the final part in our series of tutorials based on the ARK Messenger Proof-of-Concept \(PoC\). During** [**Part One**](https://blog.ark.io/ark-messenger-tutorial-part-one-30068eb8619e)**, we set up a development environment and deployed our own custom bridgechain. During** [**Part Two**](https://blog.ark.io/ark-messenger-tutorial-part-two-e49e1fbd0b27)**, we created a custom transaction and tested it. This series was created in-part with documentation provided by Delegate** [**Lemii**](https://github.com/Lemii) **as part of his** [**ARK Messenger**](https://arkmessenger.io/) **Proof-of-Concept which was funded by the** [**ARK Grants Program**](https://ark.io/grants)**.**
 
 Now that we have reached the conclusion of this series, it is time to finally launch the Proof-of-Concept. After launching the PoC we will highlight the unique ways in which building on ARK made the ARK Messenger PoC possible.
@@ -13,21 +11,24 @@ The bridgechain that supports the ARK Messenger was launched using the [ARK Depl
 ### Including the custom transaction <a id="e072"></a>
 
 * The files pertaining to the custom transaction we created were placed in the [/plugins/](https://github.com/ArkEcosystem/poc-ark-messenger-core/tree/master/plugins/message-transaction) folder.
-* The custom transaction was added as a plugin to the bridgechain by inserting `“message-transaction”: {}`, at the end of the [plugins.js](https://github.com/ArkEcosystem/poc-ark-messenger-core/blob/master/packages/core/bin/config/testnet/plugins.js) file.
+* The custom transaction was added as a plugin to the bridgechain by inserting `"message-transaction": {}`, at the end of the [plugins.js](https://github.com/ArkEcosystem/poc-ark-messenger-core/blob/master/packages/core/bin/config/testnet/plugins.js) file.
 
 ### Disabling API caching <a id="b691"></a>
 
 By default, the API caches results that are returned to the user. While this is usually a very nice feature to have, for a chat application where responsiveness is important, it is not the behavior that we want. Therefore, API caching was disabled in the [plugins.js](https://github.com/ArkEcosystem/poc-ark-messenger-core/blob/master/packages/core/bin/config/testnet/plugins.js) file:
 
-```text
-“@arkecosystem/core-api”: {cache: { enabled: false },…},
+```typescript
+"@arkecosystem/core-api": {
+    cache: { enabled: false },
+    …    
+},
 ```
 
 ### Disabling count estimates <a id="361d"></a>
 
 By default, the API returns estimates of the total count. For ARK Messenger, we prefer to use accurate numbers, and therefore force this setting in an [environment variable](https://github.com/ArkEcosystem/poc-ark-messenger-core/blob/master/packages/core/bin/config/testnet/.env) that is used in the configuration:
 
-```text
+```typescript
 CORE_API_NO_ESTIMATED_TOTAL_COUNT=true
 ```
 
@@ -35,8 +36,13 @@ CORE_API_NO_ESTIMATED_TOTAL_COUNT=true
 
 Since ARK Messenger is launched as a PoC, it is being run on a Testnet. In this network, no other nodes are connected to the network. To make sure that the forger process does not refuse to forge blocks due to not adhering to the minimum network reach, we configure it to be 0 in the [plugins.js](https://github.com/ArkEcosystem/poc-ark-messenger-core/blob/master/packages/core/bin/config/testnet/plugins.js) file:
 
-```text
-“@arkecosystem/core-p2p”: {server: {…minimumNetworkReach: 0,},
+```typescript
+"@arkecosystem/core-p2p": {
+    server: {
+        …
+        minimumNetworkReach: 0,
+    },
+},
 ```
 
 Once the above changes have been made, you are ready to launch the Proof-of-Concept! The ARK Messenger is meant to be a community initiative where everyone can get involved. If you would like to contribute, feel free to submit your issues/pull requests to the [Messenger Client](https://github.com/Lemii/poc-ark-messenger) and [Core](https://github.com/ArkEcosystem/poc-ark-messenger-core) repositories.
@@ -69,9 +75,9 @@ Thank you for joining us in this series! If you have any questions make sure to 
 
 ## ARK Messenger Tutorial Series <a id="fb75"></a>
 
-If you have missed other ARK Messenger Tutorial blog posts, you can read them by following the links below:
+If you have missed other ARK Messenger Tutorials, you can read them by following the links below:
 
 * [**Part One**](https://blog.ark.io/ark-messenger-tutorial-part-one-30068eb8619e)
 * [**Part Two**](https://blog.ark.io/ark-messenger-tutorial-part-two-e49e1fbd0b27)
-* **Part Three** _\(you are currently reading it\)_
+* **Part Three**
 
