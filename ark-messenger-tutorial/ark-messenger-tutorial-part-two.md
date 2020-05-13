@@ -31,18 +31,22 @@ In order to create our custom transaction, we will be going over the transaction
 * [Message Transaction Handler File](https://github.com/ArkEcosystem/poc-ark-messenger-core/blob/master/plugins/message-transaction/src/handlers/MessageTransactionHandler.ts)
 * [Message Builder File](https://github.com/ArkEcosystem/poc-ark-messenger-core/blob/master/plugins/message-transaction/src/builders/MessageTransactionBuilder.ts)
 
-**Message Transaction \(Creating our Custom Transaction\)**
+### **Message Transaction \(Creating our Custom Transaction\)**
 
 At the very top, we define our custom type and type group:
 
-```text
-const MESSAGE_TYPE = 101;const MESSAGE_TYPE_GROUP = 1001;
+```typescript
+const MESSAGE_TYPE = 101;
+const MESSAGE_TYPE_GROUP = 1001;
 ```
 
 Just below that, we define our transaction schema:
 
-```text
-public static getSchema(): Transactions.schemas.TransactionSchema {return schemas.extend(schemas.transactionBaseSchema, {…}}
+```typescript
+public static getSchema(): Transactions.schemas.TransactionSchema {
+return schemas.extend(schemas.transactionBaseSchema, {…}
+
+}
 ```
 
 One difference you will notice, unlike the _Business Registration Transaction_, we included the _**recipientId**_ field in our schema. This is because this field is used as the ‘channel id’ for our purposes. Apart from that, we define the rest of the transaction and our _message_ object that will be used for message data.
@@ -56,7 +60,7 @@ As for the _**serde**_ \(serializer/Deserializer\) functionality; it mostly work
 
 Serializer:
 
-```text
+```typescript
 const { addressBuffer, addressError } = Identities.Address.toBuffer(data.recipientId);
 options.addressError = addressError;
 buffer.append(addressBuffer);
@@ -64,44 +68,71 @@ buffer.append(addressBuffer);
 
 Deserializer:
 
-```text
+```typescript
 data.recipientId = Identities.Address.fromBuffer(buf.readBytes(21).toBuffer());
 ```
 
-**Message Transaction Handler**
+### **Message Transaction Handler**
 
 Next, we will work on the Message Transaction handler. Since the _**Message Transaction**_ is relatively simple, we can omit most of the logic from the _Business Registration Transaction_ handler.
 
 Using _throwIfCannotBeApplied_ we explicitly check if the message data is valid:
 
-```text
-const { data }: Interfaces.ITransaction = transaction;const { message }: { message: string } = data.asset.messageData;if (!message) {throw new MessageTransactionAssetError();}await super.throwIfCannotBeApplied(transaction, wallet, databaseWalletManager);
+```typescript
+const { data }: Interfaces.ITransaction = transaction;
+const { message }: { message: string } = data.asset.messageData;
+
+if (!message) {
+    throw new MessageTransactionAssetError();
+}
+
+await super.throwIfCannotBeApplied(transaction, wallet, databaseWalletManager);
 ```
 
 At _**applyToSender**_ and _**revertForSender**_ we perform the default apply and revert actions. The methods _**applyToRecipien**t_ and _**revertForRecipient**_ are not utilized because none of the recipient’s attributes are mutated by processing the _**Message Transaction**_.
 
 Apart from that, we let the base _**TransactionHandler**…_ “handle” the rest
 
-**Message Transaction Builder**
+### **Message Transaction Builder**
 
 The builder that is present in this file will be used in the ARK Messenger Client to create _**Message Transactions**_ ****whenever a user submits a message.
 
-First, we initialize the _data_ object with the class constructor\(\) method:
+First, we initialize the _data_ object with the class `constructor()` method:
 
-```text
-constructor() {super();this.data.type = MessageTransaction.type;this.data.typeGroup = MessageTransaction.typeGroup;this.data.version = 2;this.data.fee = Utils.BigNumber.make("1000000");this.data.amount = Utils.BigNumber.ZERO;this.data.asset = { messageData: {} };this.data.recipientId = undefined;};
+```typescript
+constructor() {
+    super();
+
+    this.data.type = MessageTransaction.type;
+    this.data.typeGroup = MessageTransaction.typeGroup;
+    this.data.version = 2;
+    this.data.fee = Utils.BigNumber.make("1000000");
+    this.data.amount = Utils.BigNumber.ZERO;
+    this.data.asset = { messageData: {} };
+    this.data.recipientId = undefined;
+};
 ```
 
 Next up, we create a method that we can use to add message data to the transaction:
 
-```text
-public messageData(message: string): MessageTransactionBuilder {this.data.asset.messageData = {message,};};
+```typescript
+public messageData(message: string): MessageTransactionBuilder {
+    this.data.asset.messageData = {
+    message,
+    };
+};
 ```
 
-Finally, we need to add the non-standard fields to the transaction data object for when it is called with getStruct\(\):
+Finally, we need to add the non-standard fields to the transaction data object for when it is called with `getStruct()`:
 
-```text
-const struct: Interfaces.ITransactionData = super.getStruct();struct.amount = this.data.amount;struct.asset = this.data.asset;struct.recipientId = this.data.recipientId;return struct;};
+```typescript
+const struct: Interfaces.ITransactionData = super.getStruct();
+struct.amount = this.data.amount;
+struct.asset = this.data.asset;
+struct.recipientId = this.data.recipientId;
+
+return struct;
+};
 ```
 
 ## Testing the Custom Transaction Builder <a id="b454"></a>
@@ -110,7 +141,7 @@ There are a number of ways to test your custom transaction. One of the best opti
 
 At the top, we import all the required packages:
 
-```text
+```typescript
 import “jest-extended”;
 import { Managers, Transactions } from “@arkecosystem/crypto”;
 import { MessageTransactionBuilder } from “../src/builders”;
@@ -119,29 +150,29 @@ import { MessageTransaction } from “../src/transactions”;
 
 Next, we need to make some adjustments with the config manager to be able to actually create the transaction. First, we select the _**testnet**_ network preset and set the _**height**_ ****to 2. This will enable the AIP11 milestone.
 
-```text
+```typescript
 Managers.configManager.setFromPreset(“testnet”);
 Managers.configManager.setHeight(2);
 ```
 
 Now we include our new custom transaction to the _transaction registry:_
 
-```text
+```typescript
 Transactions.TransactionRegistry.registerTransactionType(MessageTransaction);
 ```
 
 The configuration is now complete. What’s left is to create a test that verifies that the transaction can be built and verified:
 
-```text
+```typescript
 describe(“Test builder”, () => {
       it(“should verify correctly”, () => {
-      const builder = new MessageTransactionBuilder();
-      const tx = builder
-         .messageData(“SomeMessage”)
-         .nonce(“3”)
-         .recipientId(“AYeceuGa7tTsyG6jgq7X6qKdoXt9iJJKN6”)        .sign(“clay harbor enemy utility margin pretty hub comic piece  aerobic umbrella acquire”);
-      expect(tx.build().verified).toBeTrue();
-      expect(tx.verify()).toBeTrue();
+         const builder = new MessageTransactionBuilder();
+         const tx = builder
+            .messageData(“SomeMessage”)
+            .nonce(“3”)
+            .recipientId(“AYeceuGa7tTsyG6jgq7X6qKdoXt9iJJKN6”).sign(“clay harbor enemy utility margin pretty hub comic piece  aerobic umbrella acquire”);
+            expect(tx.build().verified).toBeTrue();
+            expect(tx.verify()).toBeTrue();
       });
 });
 ```
@@ -158,8 +189,14 @@ You can view our _**Message Transaction**_ plugin file here: [plugin.js](http://
 
 To integrate the _**Message Transaction**_ plugin in the bridgechain, we simply have to include it at the bottom of the _plugins.js_ file found in _./packages/core/bin/config/{network}/plugins.js_
 
-```text
-module.exports = {….“message-transaction”: {},};
+```typescript
+module.exports = {
+    
+    …
+    
+    .“message-transaction”: {},
+
+};
 ```
 
 Now, when we run _**yarn setup**_ to install the bridgechain, it will automatically install the custom transaction as well and include it as a plugin on startup.
@@ -178,26 +215,68 @@ To make use of the custom transaction in our chat client, we first have to inclu
 
 Now, we can simply import the Message Transaction Builder anywhere in our app to make use of it. In the ARK Messenger client, it is being imported in a separate utils file, as you can see [here](https://github.com/ArkEcosystem/poc-ark-messenger/blob/master/src/utils/transactions.ts).
 
-```text
-import { encryptMessage, fetchRemoteNonce, broadcastTransaction } from ‘./index’;import { Transactions } from ‘@arkecosystem/crypto’;import { ITransactionData, IPostTransactionResponse } from ‘../interfaces’;import { MessageTransaction } from ‘../custom-transactions/message-transaction/transactions’;import { MessageTransactionBuilder } from ‘../custom-transactions/message-transaction/builders’;
+```typescript
+import { encryptMessage, fetchRemoteNonce, broadcastTransaction } from ‘./index’;
+import { Transactions } from ‘@arkecosystem/crypto’;
+import { ITransactionData, IPostTransactionResponse } from ‘../interfaces’;
+import { MessageTransaction } from ‘../custom-transactions/message-transaction/transactions’;
+import { MessageTransactionBuilder } from ‘../custom-transactions/message-transaction/builders’;
 ```
 
 It’s required to register the new transaction type in the Transaction Registry:
 
-```text
+```typescript
 Transactions.TransactionRegistry.registerTransactionType(MessageTransaction);
 ```
 
 We’re using a custom network version defined in an environment variable. We store this in a const variable that will be passed on to the transaction builder:
 
-```text
+```typescript
 const NETWORK = Number(process.env.REACT_APP_NETWORK);
 ```
 
 Finally, we can call the builder in our custom transaction functions that will be used for the chat functionality:
 
-```text
-const createMessageTransaction = async (recipientId: string,encryptedMessage: string,passphrase: string,senderId: string): Promise<ITransactionData> => {const nonce = await fetchRemoteNonce(senderId);const tx = new MessageTransactionBuilder().network(NETWORK).recipientId(recipientId).messageData(encryptedMessage).nonce(nonce).sign(passphrase);return tx.getStruct();};export const sendMessage = async (recipientId: string,text: string,channelPassphrase: string,userPassphrase: string,userAddress: string): Promise<IPostTransactionResponse | void> => {const encryptedMessage = encryptMessage(text, channelPassphrase);try {const tx = await createMessageTransaction(recipientId,encryptedMessage,userPassphrase,userAddress);return broadcastTransaction(tx);} catch (err) {console.error(err);}};
+```typescript
+const createMessageTransaction = async (
+    recipientId: string,
+    encryptedMessage: string,
+    passphrase: string,
+    senderId: string
+    ): Promise<ITransactionData> => {
+        const nonce = await fetchRemoteNonce(senderId);
+        const tx = new MessageTransactionBuilder()
+            .network(NETWORK)
+            .recipientId(recipientId)
+            .messageData(encryptedMessage)
+            .nonce(nonce)
+            .sign(passphrase);
+        
+        return tx.getStruct();
+        };
+
+export const sendMessage = async (
+    recipientId: string,
+    text: string,
+    channelPassphrase: string,
+    userPassphrase: string,
+    userAddress: string
+    ): Promise<IPostTransactionResponse | void> => {
+
+        const encryptedMessage = encryptMessage(text, channelPassphrase);
+        try {
+            const tx = await createMessageTransaction(
+                recipientId,
+                encryptedMessage,
+                userPassphrase,
+                userAddress
+            );
+    
+    return broadcastTransaction(tx);
+} catch (err) {
+    console.error(err);
+    }
+};
 ```
 
 Alternatives to this approach are:
