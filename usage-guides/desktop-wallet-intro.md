@@ -272,7 +272,9 @@ Security is critical. By issuing a second signature transaction, you tell networ
 
 ![](../.gitbook/assets/submitsecondsignature.png)
 
-### Business Registration Transaction <a id="register-a-second-passphrase"></a>
+###  <a id="register-a-second-passphrase"></a>
+
+### Business Registration Transaction
 
 By registering your business on-chain, all the data regarding your business is stored in a decentralized manner. In addition, businesses can take control of their information and use it as a way to validate the products or services they have created.
 
