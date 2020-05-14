@@ -272,7 +272,7 @@ Security is critical. By issuing a second signature transaction, you tell networ
 
 ![](../.gitbook/assets/submitsecondsignature.png)
 
-###  <a id="register-a-second-passphrase"></a>
+
 
 ### Business Registration Transaction
 
