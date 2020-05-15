@@ -71,7 +71,8 @@ Now add the following code block:
 
 ```typescript
 if (players[2]) {
-    turn = 2;    for (let i = 0; i < 7; i++) {
+    turn = 2;
+    for (let i = 0; i < 7; i++) {
         board.push([]);
     }    
     // We'll add more here
