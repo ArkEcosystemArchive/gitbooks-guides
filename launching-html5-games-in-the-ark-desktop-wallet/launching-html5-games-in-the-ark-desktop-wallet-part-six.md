@@ -1,7 +1,5 @@
 # Launching HTML5 Games In The ARK Desktop Wallet — Part Six
 
-
-
 _**Welcome to the final part of our tutorial series looking into launching an HTML5 game in the Desktop Wallet with ARK Core and**_ [_**Construct 3**_](https://editor.construct.net/)_**! We’ve come a long way from our first tutorial. At this point, we have built an entire blockchain game including a lobby, wagers, all the game logic and paying out prizes or refunding wagers.**_
 
 What’s left is to set our game to run as a plugin inside the ARK Desktop Wallet. This will entail exporting our game as HTML5 and setting up a basic plugin to load our game inside the wallet. This plugin is not the Core plugin we already made since that is already finished and runs on our server. Instead, we will be making a Desktop Wallet plugin which will appear in the Plugin Manager within the ARK Desktop Wallet. Once we accomplish this, our game will be displayed to an entirely new audience who can download, install and play our game!
@@ -26,7 +24,7 @@ Now that our game is online, it’s time to make the Desktop Wallet plugin. For 
 
 First up, we’re going to edit our _**package.json**_ file to change some permissions. This is because some features of the Desktop Wallet require authorization from the end-user to use, for security reasons. The boilerplate package.json file from the skeleton project looks like this:
 
-```text
+```typescript
 "version": "0.0.1",
     "description": "Testing my first plugin on Ark Desktop Wallet",
     "main": "src/index.js",
@@ -43,7 +41,7 @@ First up, we’re going to edit our _**package.json**_ file to change some permi
 
 We need to add a WEBFRAME permission to this list so that we can open external web pages inside our plugin. Add it on a new line immediately after MENU\_ITEMS, like so:
 
-```text
+```typescript
 "permissions": [
     "COMPONENTS",
     "ROUTES",
@@ -54,7 +52,7 @@ We need to add a WEBFRAME permission to this list so that we can open external w
 
 We’re also going to add a couple of new sections to our package.json file which will make our plugin appear in the _Gaming_ category of the ARK Desktop Wallet, with some keywords to help people find our game:
 
-```text
+```typescript
 "desktop-wallet": {
     "categories": [
         "gaming"
@@ -75,7 +73,7 @@ We’re also going to add a couple of new sections to our package.json file whic
 
 Notice the first three keywords are in bold. That’s because those are **required** for our plugin to appear in the Plugin Manager once we publish it. Any extra keywords will be used in the search engine within the Plugin Manager to help others to find your plugin. Also remember to change the name, version, title and description to match the details for your plugin, and when you’re done you can save and close the file. Now open _**my-first-plugin.js**_ that is part of the skeleton Desktop Wallet plugin. Replace its entire contents with \(replace _&lt;your url&gt;_ where your game will be hosted\):
 
-```text
+```javascript
 module.exports = {
     template: '<div class="flex flex-1 bg-theme-feature rounded-lg overflow-y-auto"><WebFrame class="w-full rounded-lg" src="<your url>" /></div>'
 }
@@ -104,6 +102,4 @@ If you become stuck at any point make sure to consult our documents on the [**Le
 * **Part Three:** [**Making your game work with a betting system**](https://guides.ark.dev/launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-three)\*\*\*\*
 * **Part Four:** [**Implementing Game Logic into your Plugin**](https://guides.ark.dev/launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-four)\*\*\*\*
 * **Part Five:** [**Determining how Prizes Work**](https://guides.ark.dev/launching-html5-games-in-the-ark-desktop-wallet/launching-html5-games-in-the-ark-desktop-wallet-part-five)\*\*\*\*
-
-
 
