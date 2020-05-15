@@ -23,7 +23,7 @@ Let’s devote some time to each of the sections above. All of our code will be 
 
 First, we want to set up a WebSocket server. We will use WebSockets because they allow for easy bidirectional communication between our plugin and Construct 3 app. WebSockets communicate with a host and a port, and to begin we will define these in **defaults.ts**. Replace the contents of that file with the following:
 
-```text
+```typescript
 export const defaults = {
     enabled: true,
     host: "0.0.0.0",
@@ -35,13 +35,13 @@ We use host 0.0.0.0 which means we’ll accept connections to any of the IP addr
 
 To do this we first import the _****ws_ dependency by adding the following line to the top of our file:
 
-```text
+```typescript
 import * as WebSocket from “ws”;
 ```
 
 Now we want to start our WebSocket server when our plugin starts. You might have already spotted the start method in **manager.ts** which is where we’ll start our server:
 
-```text
+```typescript
 public start(options: any) {
     this.logger.info("Initialization of dApp");
 }
@@ -49,11 +49,12 @@ public start(options: any) {
 
 Let’s change this to start our WebSocket server and print a more descriptive message:
 
-```text
+```typescript
 public start(options: any) {
     try {
         const server = new WebSocket.Server({ host: options.host, port: options.port });
         this.logger.info(`Connect 4 WebSocket server listening on ws://${options.host}:${options.port}`);
+    
     } catch (error) {
         this.logger.error(`Connect 4 WebSocket server could not start: ${error.message}`);
     }
@@ -66,7 +67,7 @@ What does this do? It starts a WebSocket server using the host and port values w
 
 We want to send the network version to any client that accesses our WebSocket as soon as they connect. To do this we listen for a connection event from the WebSocket server, which fires when a new connection is established, and then we send the network version to the new connection. Add the following code after the this.logger.info line:
 
-```text
+```typescript
 const config = app.getConfig();
 const networkData = JSON.stringify({ networkVersion: config.get("network.pubKeyHash") });
 
@@ -77,7 +78,7 @@ server.on("connection", websocket => {
 
 At this point, you can run yarn set up to build our plugin, restart your Core relay, and check the logs. You should see something like this:
 
-```text
+```bash
 1|ark-relay | [2020–02–17 19:00:00.000] INFO : Connect 4 WebSocket server listening on ws://0.0.0.0:10000
 ```
 
@@ -89,7 +90,7 @@ We can check that the WebSocket is working by heading over to [http://www.websoc
 
 We need our plugin to generate a new address to receive wagers and process the Smartbridge messages to update our game state. To do this, our Construct 3 app will send a message **{action: “new”}** to the server which will trigger this action. Our Core plugin needs to listen for this message and act upon it, so we’ll add the following code immediately after the **websocket.send\(networkData\)** line above:
 
-```text
+```typescript
 websocket.on("message", message => {
     try {
         const data = JSON.parse(message.toString());
@@ -108,19 +109,22 @@ websocket.on("message", message => {
 
 You’ll see we use a new method, **generateAddress**, so we have to write the code for that too. Paste this below the end of our start method and before the stop method:
 
-```text
+```typescript
 private generateAddress() {
     const passphrase = generateMnemonic();
     const address = Identities.Address.fromPassphrase(passphrase);
+    
     return { address, passphrase };
 }
 ```
 
 We’ll also need to add a couple of imports to the top of our code to access these new methods:
 
-```text
-import { generateMnemonic } from “bip39”;
-import { Identities } from “@arkecosystem/crypto”;// Lastly we add a new addresses private variable immediately above // the private readonly logger line:
+```typescript
+import { generateMnemonic } from "bip39";
+import { Identities } from "@arkecosystem/crypto";
+
+// Lastly we add a new addresses private variable immediately above // the private readonly logger line:
 private addresses = {};
 ```
 
@@ -132,8 +136,9 @@ The final part of our Core plugin for this part of the tutorial will listen for 
 
 This chunk of code will go immediately above the second catch line in our start method:
 
-```text
-const emitter = app.resolvePlugin("event-emitter"); emitter.on(ApplicationEvents.TransactionApplied, transaction => {
+```typescript
+const emitter = app.resolvePlugin("event-emitter"); 
+emitter.on(ApplicationEvents.TransactionApplied, transaction => {
     if (this.addresses[transaction.recipientId]) {
         for (const websocket of server.clients) {
             // @ts-ignore
@@ -147,8 +152,8 @@ const emitter = app.resolvePlugin("event-emitter"); emitter.on(ApplicationEvents
 
 To finish, we just need one final import at the top of the code for the **ApplicationEvents** we used:
 
-```text
-import { ApplicationEvents } from “@arkecosystem/core-event-emitter”;
+```typescript
+import { ApplicationEvents } from "@arkecosystem/core-event-emitter";
 ```
 
 At this point, we are done with our Core plugin for this part of the tutorial! Compile it with yarn setup, restart Core and head over to Construct 3 where we’ll interact with our WebSocket. Open the project we created in the last tutorial, switch to _Layout 1_, right-click and _Insert New Object_. Add a _WebSocket_. Repeat the process, adding a _Browser_ object, a _JSON_ object, and another _Button_ which will be used to trigger the address generation process.
