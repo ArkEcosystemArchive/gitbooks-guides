@@ -1,7 +1,5 @@
 # Launching HTML5 Games In The ARK Desktop Wallet — Part Four
 
-
-
 _**Welcome once again to the fourth tutorial in our series explaining how to launch an HTML5 game in the Desktop Wallet by writing an ARK Core plugin and using**_ [_**Construct 3**_](https://editor.construct.net/) _**for the client. In this part, we will implement turn-based game logic into our Connect 4 game by reading the smartbridge \(also known as the vendorfield\) messages of transactions sent to our generated game addresses to fill up the game board and keep track of whose turn it is.**_
 
 ## Implementing Game Logic <a id="3b7e"></a>
@@ -29,7 +27,7 @@ Now that we’ve mapped out our game logic, it’s time to code it up. As usual,
 
 We’re going to start by finding the following block that we wrote last time:
 
-```text
+```typescript
 for (const transaction of transactions) {
     if (transaction.senderId !== address && transaction.senderId !== players[1] && transaction.amount === wager) {
         players[2] = transaction.senderId;
@@ -40,7 +38,7 @@ for (const transaction of transactions) {
 
 Replace it with this:
 
-```text
+```typescript
 let transactionCounter = 0;
 for (const transaction of transactions) {
     if (transaction.senderId !== address && transaction.senderId !== players[1] && transaction.amount === wager) {
@@ -55,25 +53,28 @@ We do this so that we count the number of transactions that it took for us to ma
 
 Next up, find the following line that we wrote in the last tutorial:
 
-```text
+```typescript
 this.gameStates[address] = { players, wager };
 ```
 
 Replace this line with the following code block beneath it:
 
-```text
-const board: Array<Array<number>> = [];let turn: number = 0;let outcome: string | number = “ongoing”;
+```typescript
+const board: Array<Array<number>> = [];
+let turn: number = 0;
+let outcome: string | number = “ongoing”;
 ```
 
 So, we’re declaring some new variables: board, outcome and turn. The board variable will contain an array holding the state of each column on the board. The outcome variable will be used to store who has won the game, if it is still ongoing, or if it is tied, and turn determines whose turn it is; we’re initializing it to zero until we know we have 2 valid participants \(and then player 2 always starts since they were the last to join the game\).
 
 Now add the following code block:
 
-```text
+```typescript
 if (players[2]) {
     turn = 2;    for (let i = 0; i < 7; i++) {
         board.push([]);
-    }    // We'll add more here
+    }    
+    // We'll add more here
 }
 this.gameStates[address] = { board, outcome, players, turn, wager };
 ```
@@ -82,10 +83,12 @@ This means the rest of our board generation logic will only execute if we have t
 
 Next, we will add the following code block:
 
-```text
+```typescript
 const moves = transactions.slice(transactionCounter + 1).filter(transaction => !!transaction.vendorField);for (const move of moves) {
     if (move.senderId === players[turn]) {
-        const column = parseInt(move.vendorField) — 1;                if (!isNaN(column) && column >= 0 && column <= 6) {
+        const column = parseInt(move.vendorField) — 1;                
+        
+        if (!isNaN(column) && column >= 0 && column <= 6) {
               if (board[column].length < 6) {
                 outcome = this.makeMove(turn, board, column);
                 turn = turn === 2 ? 1 : 2;
@@ -107,10 +110,11 @@ Lastly, we check the value of the outcome variable. If the value is no longer on
 
 And with that, our _**generateState**_ function is complete! The last thing to do before heading over to Construct 3 is to write our _**makeMove**_ function. This is game-specific and includes the logic to check if four discs are in a line:
 
-```text
+```typescript
 private makeMove(turn: number, board: Array<Array<number>>, column: number) {
     board[column].push(turn);
     let full = true;
+    
     for (let i = 0; i < board.length; i++) {
         for (let j = 0; j < 6; j++) {
             const disc = board[i][j];
@@ -119,25 +123,37 @@ private makeMove(turn: number, board: Array<Array<number>>, column: number) {
                 if (board[i][j + 1] === disc && board[i][j + 2] === disc && board[i][j + 3] === disc) {
                     board[i][j] = board[i][j + 1] = board[i][j + 2] = board[i][j + 3] = disc;
                     won = true;
-                }                                if (board[i + 1] && board[i + 2] && board[i + 3] && board[i + 1][j] === disc && board[i + 2][j] === disc && board[i + 3][j] === disc) {
+                }                                
+                
+                if (board[i + 1] && board[i + 2] && board[i + 3] && board[i + 1][j] === disc && board[i + 2][j] === disc && board[i + 3][j] === disc) {
                     board[i][j] = board[i + 1][j] = board[i + 2][j] = board[i + 3][j] = disc;
                     won = true;
-                }                                if (board[i + 1] && board[i + 2] && board[i + 3] && board[i + 1][j + 1] === disc && board[i + 2][j + 2] === disc && board[i + 3][j + 3] === disc) {
+                }                                
+                
+                if (board[i + 1] && board[i + 2] && board[i + 3] && board[i + 1][j + 1] === disc && board[i + 2][j + 2] === disc && board[i + 3][j + 3] === disc) {
                     board[i][j] = board[i + 1][j + 1] = board[i + 2][j + 2] = board[i + 3][j + 3] = disc;
                     won = true;
-                }                                if (board[i + 1] && board[i + 2] && board[i + 3] && board[i + 1][j — 1] === disc && board[i + 2][j — 2] === disc && board[i + 3][j — 3] === disc) {
+                }                                
+                
+                if (board[i + 1] && board[i + 2] && board[i + 3] && board[i + 1][j — 1] === disc && board[i + 2][j — 2] === disc && board[i + 3][j — 3] === disc) {
                     board[i][j] = board[i + 1][j — 1] = board[i + 2][j — 2] = board[i + 3][j — 3] = disc;
                     won = true;
-                }                                 if (won) {
+                }                                 
+                
+                if (won) {
                     return disc;
                 }
             } else {
                 full = false;
             }
         }
-    }    if (full) {
+    }    
+    
+    if (full) {
         return "tie";
-    }        return "ongoing";
+    }        
+    
+    return "ongoing";
 }
 ```
 
@@ -151,13 +167,14 @@ Now, save your work and run yarn build. It’s time to head over to Construct 3 
 
 Go to our _Event Sheet 1_ and find our previously created _On start of layout_ event. Right-click our existing event and _Add script_ as we’ll be writing some code here to allow our lobby iframes \(from the previous chapter\) to interact with our game. Specifically, we’ll include a link to watch an ongoing game.
 
-```text
+```typescript
 if (!window.addedEventListener) {
     window.addEventListener("message", event => {
         if (event.data) {
             runtime.callFunction("IPC", event.data);
         }
     });
+    
     window.addedEventListener = true;
 }
 ```
@@ -172,11 +189,13 @@ Let’s create that function. Right-click an empty area of the event sheet and c
 
 To add our link to watch an ongoing game, we’ll edit the existing code in our ParseLobby function. Scroll through our event to locate that function, then find the following code blocks:
 
-```text
+```typescript
 for (const game of existingGames) {
     const wager = game.game.wager / 100000000;
     html += "<div>Game between " + game.game.players[1] + " and " + game.game.players[2] + " for " + wager + runtime.globalVars.Symbol + "</div>";
-}for (const game of ourGames) {
+}
+
+for (const game of ourGames) {
     const wager = game.game.wager / 100000000;
     html += "<div>Game between " + (game.game.players[1] === runtime.globalVars.ValidatedAddress ? "you" : game.game.players[1]) + " and " + (game.game.players[2] === runtime.globalVars.ValidatedAddress ? "you" : game.game.players[2]) + " for " + wager + runtime.globalVars.Symbol + "</div>";
 }
@@ -184,11 +203,13 @@ for (const game of existingGames) {
 
 We’re going to replace them with code blocks that also include a link to watch our game, which will work by sending a message from the iframe to our game, containing the address of the game we want to watch.
 
-```text
+```typescript
 for (const game of existingGames) {
     const wager = game.game.wager / 100000000;
     html += "<div>Game between " + game.game.players[1] + " and " + game.game.players[2] + " for " + wager + runtime.globalVars.Symbol + " (<a href='#' onclick='parent.postMessage(\"" + game.address + "\", \"*\"); return false'>Watch</a>)</div>";
-}for (const game of ourGames) {
+}
+
+for (const game of ourGames) {
     const wager = game.game.wager / 100000000;
     html += "<div>Game between " + (game.game.players[1] === runtime.globalVars.ValidatedAddress ? "you" : game.game.players[1]) + " and " + (game.game.players[2] === runtime.globalVars.ValidatedAddress ? "you" : game.game.players[2]) + " for " + wager + runtime.globalVars.Symbol + " (<a href='#' onclick='parent.postMessage(\"" + game.address + "\", \"*\"); return false'>Watch</a>)</div>";
 }
@@ -222,20 +243,25 @@ We also need to update the board as soon as the game layout opens, so let’s cr
 
 Time to write our ParseBoard logic! We’re going to pick the game that we want by using the _**GameAddress**_ that we saved earlier and display whose turn it is. If the address of the player whose turn it is matches our own validated address, we will print “You” instead of the address. So, let’s go!
 
-```text
+```typescript
 const games = JSON.parse(runtime.globalVars.JSON);
 const game = games[runtime.globalVars.GameAddress];
 let text = "";
-runtime.globalVars.TurnAddress = "";if (game.outcome === "ongoing") {
+runtime.globalVars.TurnAddress = "";
+
+if (game.outcome === "ongoing") {
     text = `Current turn: ${game.players[game.turn]} (${game.turn === 1 ? "Red" : "Yellow"})`;
     runtime.globalVars.TurnAddress = game.players[game.turn];
-} else if(game.outcome === "tie") {
+} else if (game.outcome === "tie") {
     text = "Game tied!";
 } else {
     text = `Winner: ${game.players[game.outcome]}!`;
-}if (runtime.globalVars.ValidatedAddress) {
+}
+
+if (runtime.globalVars.ValidatedAddress) {
     text = text.replace(runtime.globalVars.ValidatedAddress, "You");
 }
+
 runtime.objects['StatusText'].getFirstInstance().text = text;
 ```
 
@@ -243,7 +269,7 @@ Hopefully, by now you can understand how this works. We extract our game from th
 
 Let’s now expand our _**ParseBoard**_ further to change the color of the discs to represent the current state of the board:
 
-```text
+```typescript
 const discs = runtime.objects['Disc'].getAllInstances();
 for (const column in game.board) {
     let row = 0;
