@@ -23,11 +23,13 @@ We will be using the free plan of the [Construct 3 engine](https://editor.constr
 
 Unfortunately, at the time of writing, the ARK JavaScript SDK is not fully compatible with HTML5 games out of the box, so we will use an alternative called _bs58check_ to validate addresses. The steps to build our alternative are outlined below, but if you prefer to skip that, you can use a pre-bundled version which we’ll discuss in a second. If you’d like to build it yourself, make sure you’ve installed NodeJS and npm, then execute:
 
-```text
-npm install -g browserify uglify-jsnpm install bs58checkbrowserify — standalone bs58check -r bs58check | uglifyjs > bs58check.min.js
+```bash
+npm install -g browserify uglify-js
+npm install bs58check
+browserify --standalone bs58check -r bs58check | uglifyjs > bs58check.min.js
 ```
 
-Next, we’ll import our bs58check.min.js file into our Construct 3 project so the game can use it. This is really simple — just right click _**Scripts**_ ****in the top-right pane, choose _**Import Scripts**_ and drag and drop our bs58check.min.js file into the window. Click _**Import**_ and you’re done!
+Next, we’ll import our _bs58check.min.js_ file into our Construct 3 project so the game can use it. This is really simple — just right click _**Scripts**_ ****in the top-right pane, choose _**Import Scripts**_ and drag and drop our _bs58check.min.js_ file into the window. Click _**Import**_ and you’re done!
 
 ![Import the bs58check.min.js script here](https://miro.medium.com/max/428/0*RIUB0REioSFfp9Ln)
 
@@ -57,13 +59,22 @@ Let’s start by creating a variable to hold the network version. Right-click ou
 
 We will create a function to validate the address. Right-click anywhere in the event sheet and choose _**Add function**_. Call it validateAddress and set the return type to Number. Hit OK, then right-click our new function and _**Add parameter**_. Call it address which is a String. Now right click _**Add action**_ for our function and choose _**Add script**_. Now we can finally write some JavaScript!
 
-```text
-if (localVars.address.length === 34) {try {const networkVersion = bs58check.decode(localVars.address).readUInt8(0);if (networkVersion === runtime.globalVars.networkVersion) {runtime.setReturnValue(1);}} catch (error) {// the address is invalid}}
+```javascript
+if (localVars.address.length === 34) {
+    try {
+        const networkVersion = bs58check.decode(localVars.address).readUInt8(0);
+        if (networkVersion === runtime.globalVars.networkVersion) {
+                runtime.setReturnValue(1);
+        }
+    } catch (error) {
+        // the address is invalid
+    }
+}
 ```
 
-Let’s break this down. By default, the function will return zero. If the address is 34 characters, it will execute bs58check.decode which will throw an error and exit the function if the address contains invalid characters or the checksum fails. Otherwise, we check that the network version matches the ARK Public Network. If so, we return a value of 1. In simple terms, if the address passes our checks, the function returns 1, otherwise, it returns 0.
+Let’s break this down. By default, the function will return zero. If the address is 34 characters, it will execute _bs58check.decode_ which will throw an error and exit the function if the address contains invalid characters or the checksum fails. Otherwise, we check that the network version matches the ARK Public Network. If so, we return a value of 1. In simple terms, if the address passes our checks, the function returns 1, otherwise, it returns 0.
 
-Now we’ll put our function to work! We want it to run whenever our button is clicked. Click _**Add**…_ next to our _**On clicked**_ event and ****_**Add sub-event**_. Scroll down to _**System**_ ****and _**Compare two values**_. Essentially, what we want to do is check if our function returns a 1 or not. So, our first value should be Functions.validateAddress\(TextInput.Text\) and our second value should be 1.
+Now we’ll put our function to work! We want it to run whenever our button is clicked. Click _**Add**…_ next to our _**On clicked**_ event and ****_**Add sub-event**_. Scroll down to _**System**_ ****and _**Compare two values**_. Essentially, what we want to do is check if our function returns a 1 or not. So, our first value should be `Functions.validateAddress(TextInput.Text)` and our second value should be 1.
 
 ![Using our new function](https://miro.medium.com/max/755/0*XwonDwRsIKtj10xW)
 
