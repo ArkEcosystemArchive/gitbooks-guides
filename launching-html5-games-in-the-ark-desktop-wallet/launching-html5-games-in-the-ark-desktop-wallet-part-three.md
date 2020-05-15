@@ -23,16 +23,20 @@ There are various possibilities. For example, you might want to use a database, 
 
 Let’s import FluiDB into our project by running the following command on our server to install the library:
 
-```text
-lerna add fluidb — dev
+```bash
+lerna add fluidb --dev
 ```
 
 Now we import the dependency into our plugin by adding the following lines to the top of our **manager.ts** file:
 
-```text
+```typescript
 import delay from "delay";
-import FluiDB from "fluidb";// Replace our previous implementation with FluiDB. Find:
-private addresses = {};// Replace it with:
+import FluiDB from "fluidb"; 
+
+// Replace our previous implementation with FluiDB. Find:
+private addresses = {}; 
+
+// Replace it with:
 private addresses = new FluiDB(`${process.env.CORE_PATH_DATA}/generated-addresses`);
 private gameStates = {};
 ```
@@ -47,24 +51,28 @@ For simplicity, we are going to create a function that will iterate through all 
 
 Find our line here where we declare our start function:
 
-```text
-public start(options: any) {// Make it asynchronous by adding the async keyword, so it looks like this:
+```typescript
+public start(options: any) {
+
+// Make it asynchronous by adding the async keyword, so it looks like this:
 public async start(options: any) {
 ```
 
 Then find:
 
-```text
-const networkData = JSON.stringify({ networkVersion: config.get(“network.pubKeyHash”) });
+```typescript
+const networkData = JSON.stringify({ networkVersion: config.get("network.pubKeyHash") });
 ```
 
 Change this to:
 
-```text
+```typescript
 const networkData = JSON.stringify({
     networkVersion: config.get("network.pubKeyHash"),
     symbol: config.get("network.client.symbol")
-});//On the next line, add the following block of code:
+});
+
+//On the next line, add the following block of code:
 for (const address of Object.keys(this.addresses)) {
     this.generateState(address);
 }
@@ -74,7 +82,7 @@ This will go through all our generated addresses and call our yet-to-be-written 
 
 Next, find where we listen for incoming transactions, which we wrote in our last tutorial:
 
-```text
+```typescript
 emitter.on(ApplicationEvents.TransactionApplied, transaction => {
     if (this.addresses[transaction.recipientId]) {
         for (const websocket of server.clients) {
@@ -89,15 +97,17 @@ emitter.on(ApplicationEvents.TransactionApplied, transaction => {
 
 First, in the top line, change transaction to async transaction so our function is asynchronous. Then, see the `for (const websocket of server.clients)`line? Immediately before that line, add this to regenerate the state of any game address that receives a new transaction as soon as it is written to the blockchain database:
 
-```text
+```typescript
 while (!(await app.resolvePlugin(“database”).transactionsBusinessRepository.findById(transaction.id))) {
     await delay(100);
-}await this.generateState(transaction.recipientId);
+}
+
+await this.generateState(transaction.recipientId);
 ```
 
 Now it’s time to write this elusive **generateState** function. Find our block of code where we wrote the **generateAddress** function, and immediately below that block, we’ll write our new **generateState** code:
 
-```text
+```typescript
 private async generateState(address: string) {
     const database = app.resolvePlugin("database");
     const publicKey = Identities.PublicKey.fromPassphrase(this.addresses[address]);        const transactions: any[] = await Promise.all(
@@ -112,7 +122,9 @@ private async generateState(address: string) {
             timestamp: (await database.blocksBusinessRepository.findById(transaction.blockId)).timestamp,
             vendorField: transaction.vendorField ? transaction.vendorField.toString().trim().toUpperCase() : null
         })
-    ));        transactions.sort((a: any, b: any) => (a.timestamp > b.timestamp) ? 1 : ((b.timestamp > a.timestamp) ? -1 : 0));        const players = { 1: null, 2: null };
+    ));        
+    
+    transactions.sort((a: any, b: any) => (a.timestamp > b.timestamp) ? 1 : ((b.timestamp > a.timestamp) ? -1 : 0));        const players = { 1: null, 2: null };
     let wager = 0;
     for (const transaction of transactions) {
         if (transaction.senderId !== address && transaction.amount >= 10000000) {
@@ -120,14 +132,20 @@ private async generateState(address: string) {
             wager = transaction.amount;
             break;
         }
-    }        if (!players[1]) {
+    }        
+    
+    if (!players[1]) {
         return;
-    }        for (const transaction of transactions) {
+    }        
+    
+    for (const transaction of transactions) {
         if (transaction.senderId !== address && transaction.senderId !== players[1] && transaction.amount === wager) {
             players[2] = transaction.senderId;
             break;
         }
-    }        this.gameStates[address] = { players, wager };
+    }        
+    
+    this.gameStates[address] = { players, wager };
 }
 ```
 
@@ -139,15 +157,16 @@ If you made it this far, well done! We’ve completed the logic to create a lobb
 
 Find:
 
-```text
+```typescript
 websocket.send(networkData);
 ```
 
 Immediately after it, add:
 
-```text
-websocket.send(JSON.stringify({ games: JSON.stringify(this.gameStates) }));
-// This will send all our game states to the client as soon as it connects.// Lastly, find:
+```typescript
+websocket.send(JSON.stringify({ games: JSON.stringify(this.gameStates) })); // This will send all our game states to the client as soon as it connects.
+
+// Lastly, find:
 for (const websocket of server.clients) {
     // @ts-ignore
     if (websocket.readyState === WebSocket.OPEN && websocket.address === transaction.recipientId) {
@@ -158,10 +177,13 @@ for (const websocket of server.clients) {
 
 And replace it with:
 
-```text
-const state = JSON.stringify({ games: JSON.stringify(this.gameStates) });for (const websocket of server.clients) {
+```typescript
+const state = JSON.stringify({ games: JSON.stringify(this.gameStates) });
+for (const websocket of server.clients) {
     if (websocket.readyState === WebSocket.OPEN) {
-        websocket.send(state);                // @ts-ignore
+        websocket.send(state);                
+        
+        // @ts-ignore
         if (websocket.address === transaction.recipientId) {
             websocket.send(JSON.stringify({ transaction }));
         }
@@ -193,15 +215,18 @@ Next we’re going to create a function to parse our lobby data. Right-click a b
 
 Find our ParseLobby function and choose _Add action_. Pick _Add Script_. Now we’re going to enter our code to parse the lobby list and populate our iframes:
 
-```text
+```typescript
 const games = JSON.parse(runtime.globalVars.JSON);
 const newGames = [];
 const existingGames = [];
 const ourGames = [];
+
 for (const address of Object.keys(games)) {
     const game = games[address];    
+    
     if (game.players[2]) {
         existingGames.push({ address, game });        
+        
         if (game.players[1] === runtime.globalVars.ValidatedAddress || game.players[2] === runtime.globalVars.ValidatedAddress) 
             ourGames.push({ address, game });
         }
@@ -209,19 +234,25 @@ for (const address of Object.keys(games)) {
         newGames.push({ address, game });
     }
 }
+
 let html = "";
+
 for (const game of newGames) { 
     const wager = (game.game.wager / 100000000);
     html += "<div>New game by " + game.game.players[1] + " for " + wager + runtime.globalVars.Symbol + " (<a href='ark:" + game.address + "&amount=" + wager + "'>Join</a>)</div>";
 }
+
 document.getElementById("NewIframe").contentWindow.document.body.innerHTML = html;
 html = "";
+
 for (const game of existingGames) {
     const wager = game.game.wager / 100000000;
     html += "<div>Game between " + game.game.players[1] + " and " + game.game.players[2] + " for " + wager + runtime.globalVars.Symbol + "</div>";
 }
+
 document.getElementById("ExistingIframe").contentWindow.document.body.innerHTML = html;
 html = "";
+
 for (const game of ourGames) {
     const wager = game.game.wager / 100000000;
     html += "<div>Game between " + (game.game.players[1] === runtime.globalVars.ValidatedAddress ? "you" : game.game.players[1]) + " and " + (game.game.players[2] === runtime.globalVars.ValidatedAddress ? "you" : game.game.players[2]) + " for " + wager + runtime.globalVars.Symbol + "</div>";
