@@ -1,7 +1,5 @@
 # Launching HTML5 Games In The ARK Desktop Wallet — Part Five
 
-
-
 _**We have now arrived at the penultimate part of our series exploring how to launch HTML5 games in the Desktop Wallet using an ARK Core plugin and**_ [_**Construct 3**_](https://editor.construct.net/)_**. If you’ve been following all the previous parts of this series, you will have successfully built a fully working blockchain game from scratch using smartbridge messages to make moves with an integrated lobby to make bets and match wagers.**_
 
 While our game is fully functional, we haven’t yet implemented any prize logic aside from the initial wager matching. That is to say, winners, don’t get paid a prize and bets are not refunded in the case of a tie. However, that will be the subject of today’s tutorial.
@@ -14,14 +12,18 @@ This tutorial is entirely based on the ARK Core plugin, so we will not be making
 
 Before we start, we have to import Transactions from ARK’s crypto library. To do this, find:
 
-```text
-import { Identities } from “@arkecosystem/crypto”;
+```typescript
+import { Identities } from "@arkecosystem/crypto";
 ```
 
 Replace it with:
 
-```text
-import { Identities, Transactions } from “@arkecosystem/crypto”;// Now, we’ll examine the relevant part of our existing generateState function to see what happens when a game is won or tied:if (outcome !== “ongoing”) {
+```typescript
+import { Identities, Transactions } from "@arkecosystem/crypto"; 
+
+// Now, we’ll examine the relevant part of our existing generateState function to see what happens when a game is won or tied:
+
+if (outcome !== “ongoing”) {
     break;
 }
 ```
@@ -30,7 +32,7 @@ Let’s remember that in the event of a tie, the outcome variable value will be 
 
 From this code snippet, we can see at the moment, if the value of the outcome variable is not “ongoing” \(i.e. the game was won or tied\) then our loop ends, but nothing else happens. Let’s go ahead and revise this code now to include logic to pay our players. Since the code only ever executes if the game has been won or tied, we should check if it was in fact tied. If so, we return the wager to both players. If not, it means a player has won the game so should receive the whole prize, which is the sum of both wagers:
 
-```text
+```typescript
 if (outcome !== "ongoing") {
     if (outcome === "tie") {
         this.pay(address, players, wager);
@@ -57,21 +59,28 @@ Putting this together, our logic for the pay function is as follows:
 
 We can accomplish this in the following way:
 
-```text
+```typescript
 private pay(sender: string, recipient: string | object, amount: number) {
-    const wallet = app.resolvePlugin("database").walletManager.findById(sender);        if (wallet.nonce.toString() !== "0") {
+    const wallet = app.resolvePlugin("database").walletManager.findById(sender);        
+    if (wallet.nonce.toString() !== "0") {
         return;
-    }    const passphrase = this.addresses[sender];
+    }    
+    
+    const passphrase = this.addresses[sender];
     const publicKey = Identities.PublicKey.fromPassphrase(passphrase);
     const fee = "1000000";
     const payAmount = (amount — parseInt(fee)).toString();
-    let transaction;        if (typeof recipient === "string") {
+    let transaction;        
+    
+    if (typeof recipient === "string") {
         transaction = Transactions.BuilderFactory.transfer().nonce("1").senderPublicKey(publicKey).recipientId(recipient).fee(fee).amount(payAmount).vendorField("You won the game, congratulations!");
     } else {
         transaction = Transactions.BuilderFactory.multiPayment().nonce("1").senderPublicKey(publicKey).fee(fee).vendorField("The game was tied. Here is your wager!");
         transaction.addPayment(recipient[1], payAmount);
         transaction.addPayment(recipient[2], payAmount);
-    }        const signedTransaction = transaction.sign(passphrase).build();
+    }        
+    
+    const signedTransaction = transaction.sign(passphrase).build();
     app.resolvePlugin("p2p").getMonitor().broadcastTransactions([signedTransaction]);
 }
 ```
